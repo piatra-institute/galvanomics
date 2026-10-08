@@ -1,0 +1,9 @@
+# The same tissue and wound with BETSE's own non-polarized membrane on both domains: BETSE's
+# basic-profile permeabilities and the pump everywhere. The comparison case for W3.
+name: betse-wound-uniform
+description: BETSE wound tissue as 3D epithelium with BETSE's uniform (non-polarized) membranes
+footprint:
+  kind: betse_bundle
+  bundle: ../../betse-adapter/data/work/wound-default-a/wound-default-a.tbundle
+wound:
+  kind: from_bundle

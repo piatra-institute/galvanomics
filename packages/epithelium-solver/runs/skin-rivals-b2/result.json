@@ -1,0 +1,205 @@
+{
+  "run": "skin-rivals-b2",
+  "started_utc": "2026-10-08T08:02:45+00:00",
+  "note": "B2 (and A2) were fixed in docs/plan.md after B failed R1 and before any B2 run. Machine-checked, not human-confirmed.",
+  "environment": {
+    "episolver": "0.1.0",
+    "python": "3.12.11",
+    "numpy": "2.5.3"
+  },
+  "checks": {
+    "R1b": {
+      "passed": false,
+      "value": {
+        "depolarize_factor": 7.29839917130253,
+        "vm_basal_spinous_mV": -32.019867354962585,
+        "vm_granular_mV": 3.9974054933609744,
+        "a_na_m2_per_s": 4.719744715520459e-16,
+        "d_star_um": 171.13734713993233,
+        "g_star_m2_per_s": null,
+        "B2_fits": false,
+        "B2_best_reduction": 0.9726172688020625,
+        "amiloride_reduction": {
+          "A": 0.6375797874389215
+        },
+        "battery_intact_mV": {
+          "A": 21.29001129047609
+        },
+        "target_mV": 21.280007772468863,
+        "B_wound_cl_S_per_m2": 0.0,
+        "B_ano1_per_um2": 0.0,
+        "field_unblocked_20_100": {
+          "A": -145.96435990987177
+        }
+      },
+      "tolerance": "Vm within 0.5 mV of -32 mV; battery within 1% of T; reduction within 64 +- 1 points",
+      "detail": "calibration of A2 and B2 on depolarized keratinocytes"
+    }
+  },
+  "reported": {
+    "R2b": {
+      "value": {
+        "I1_cl_blocker": {
+          "A": 0.0
+        },
+        "I2_amiloride_plus_cl_blocker": {
+          "A": 0.6375797874389215
+        },
+        "I4_pge2": {
+          "A": 0.0
+        },
+        "I3_amiloride_far_band": {
+          "A": -1.5633280469630266
+        }
+      },
+      "detail": "as R2, on depolarized keratinocytes"
+    }
+  },
+  "target_battery_mV": 21.280007772468863,
+  "vm_target_mV": -32.0,
+  "calibration": {
+    "depolarize": {
+      "grid": [
+        2.0,
+        4.0,
+        6.0,
+        8.0,
+        12.0,
+        16.0,
+        24.0
+      ],
+      "vm_grid": [
+        -60.47494114403551,
+        -45.993209064898664,
+        -36.668791131828876,
+        -29.81244642351701,
+        -19.959331558123168,
+        -12.923166014292457,
+        -3.0886870929036623
+      ],
+      "factor": 7.29839917130253,
+      "vm": -32.01627558686018,
+      "history": [
+        [
+          7.29839917130253,
+          -32.01627558686018
+        ]
+      ]
+    },
+    "apical_na": {
+      "grid": [
+        1e-16,
+        2e-16,
+        3e-16,
+        4.5e-16,
+        7e-16,
+        1e-15,
+        1.5e-15
+      ],
+      "battery_grid": [
+        12.678401515593983,
+        16.355851045541954,
+        18.702408991213996,
+        21.02405743187103,
+        23.395987182085857,
+        25.12085168692183,
+        26.8345290601346
+      ],
+      "a_na": 4.719744715520459e-16,
+      "battery": 21.29001129047609,
+      "history": [
+        [
+          4.719744715520459e-16,
+          21.29001129047609
+        ]
+      ]
+    },
+    "check": {
+      "battery_intact_mV": 21.29001129047609,
+      "vmem_basal_spinous_mV": -32.019867354962585,
+      "vmem_granular_mV": 3.9974054933609744,
+      "kcl": 1.0781481088391635e-12,
+      "charge": 3.038857192149648e-10
+    }
+  },
+  "all_passed": false,
+  "finished_utc": "2026-10-08T08:21:40+00:00",
+  "phase2": {
+    "d_grid": [
+      100.0,
+      150.0,
+      200.0,
+      250.0,
+      300.0,
+      400.0
+    ],
+    "reduction_A": [
+      0.2556479042580344,
+      0.5725973600155573,
+      0.7320370464109867,
+      0.8277968437786677,
+      0.8926966956675817,
+      0.9473975039160684
+    ],
+    "d_hist": [
+      [
+        171.13734713993233,
+        0.6375797874389215
+      ]
+    ],
+    "g_grid": [
+      1e-16,
+      1e-15,
+      1e-14,
+      3e-14,
+      1e-13,
+      3e-13
+    ],
+    "reduction_B": [
+      0.9761726590901797,
+      0.9727513322205751,
+      0.9726172688020625,
+      0.9726948612827666,
+      0.9727376910850284,
+      0.9727523446566262
+    ],
+    "g_hist": [],
+    "field_unblocked_B": [
+      -147.2563907493642,
+      -153.039790018497,
+      -162.27922149548291,
+      -164.3670278438398,
+      -165.23373492388689,
+      -165.4942625876016
+    ]
+  },
+  "frozen_config_sha256": {
+    "A:none": "36c72f88704c4a10c65151f1c1745b860ebc304b579809ecb31a05a69ffd8552",
+    "A:amiloride": "d70afe69ddba8dac31b39ab8b9f76638dd860a7e2f1cbdae6ec50a17185fce47",
+    "A:I1_cl_blocker": "c5030c070945b3ef8c995a08037f900f09c9e610fbde94855e9fb6266c6e7e69",
+    "A:I2_amiloride_plus_cl_blocker": "3577410cc4adc1e4ec235f28283b08da6d051465ee3b5d5139e52e2a0c8f5fbf",
+    "A:I4_pge2": "918a2fed7c7f1bbd38f79575c4340c0d9a7977433a61871082b21d99dd89b69c"
+  },
+  "conservation": {
+    "A:none": {
+      "kcl": 3.2873792286004305e-12,
+      "charge": 5.465490460176371e-10
+    },
+    "A:amiloride": {
+      "kcl": 2.0842353580418735e-12,
+      "charge": 3.49189121741248e-10
+    },
+    "A:I1_cl_blocker": {
+      "kcl": 3.2873792286004305e-12,
+      "charge": 5.465490460176371e-10
+    },
+    "A:I2_amiloride_plus_cl_blocker": {
+      "kcl": 2.0842353580418735e-12,
+      "charge": 3.49189121741248e-10
+    },
+    "A:I4_pge2": {
+      "kcl": 3.2873792286004305e-12,
+      "charge": 5.465490460176371e-10
+    }
+  }
+}

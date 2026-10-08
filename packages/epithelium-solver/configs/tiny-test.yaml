@@ -1,0 +1,15 @@
+# A few cells for fast tests (the Blender smoke test uses it); not a scientific configuration.
+name: tiny-test
+description: Tiny polarized hexagonal epithelium with a wound, for tests
+footprint: {kind: hex, cols: 5, rows: 5, radius_um: 5.0}
+wound: {kind: circle, x_um: 26.0, y_um: 23.0, r_um: 6.0}
+apical:
+  pump_alpha: 0.0
+  channels:
+    - {type: NaLeak, max_d: 1.0e-17}
+basolateral:
+  pump_alpha: 1.0e-7
+  channels:
+    - {type: KLeak, max_d: 5.0e-17}
+    - {type: Kir2p1, max_d: 1.0e-17}
+time: {init_dt_s: 5.0e-3, init_s: 0.2, dt_s: 1.0e-3, sim_s: 0.2, sample_s: 0.05}

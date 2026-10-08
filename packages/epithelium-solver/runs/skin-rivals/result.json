@@ -1,0 +1,209 @@
+{
+  "run": "skin-rivals",
+  "started_utc": "2026-10-08T07:40:50+00:00",
+  "note": "R1-R4 were fixed in docs/plan.md (rival mechanisms after H1) after the chloride sources and before any run of either rival. Machine-checked, not human-confirmed.",
+  "environment": {
+    "episolver": "0.1.0",
+    "python": "3.12.11",
+    "numpy": "2.5.3"
+  },
+  "checks": {
+    "R1": {
+      "passed": false,
+      "value": {
+        "a_na_m2_per_s": 2.9785365223142775e-16,
+        "d_star_um": 177.2279467572617,
+        "g_star_m2_per_s": 9.999999999999965e-17,
+        "amiloride_reduction": {
+          "A": 0.6515983995252534,
+          "B": 0.9714374938077464
+        },
+        "battery_intact_mV": {
+          "A": 21.28031737980181,
+          "B": 21.28031737980181
+        },
+        "target_mV": 21.280007772468863,
+        "B_wound_cl_S_per_m2": 1.2986625771440554,
+        "B_ano1_per_um2": 0.49378805214602867,
+        "B_exposed_faces": 50,
+        "field_unblocked_20_100": {
+          "A": -144.7120127948704,
+          "B": -145.82054151865808
+        }
+      },
+      "tolerance": "battery within 1% of T; amiloride reduction within 64 +- 1 points",
+      "detail": "calibration of both rivals; plausibility: A's d against amiloride diffusion, B's density as ANO1 channels per um2 of exposed membrane (2.63 pS each)"
+    }
+  },
+  "reported": {
+    "R2": {
+      "value": {
+        "I1_cl_blocker": {
+          "A": 0.0,
+          "B": 0.0076020066325556135
+        },
+        "I2_amiloride_plus_cl_blocker": {
+          "A": 0.6515983995252534,
+          "B": 0.9716073022194637
+        },
+        "I4_pge2": {
+          "A": 0.0,
+          "B": -0.00592023222294813
+        },
+        "I3_amiloride_far_band": {
+          "A": -1.6478060670198564,
+          "B": 0.9655552144236113
+        }
+      },
+      "detail": "predicted change of the wound field (reduction: 1 - with / without), 20-100 um band unless named; I4 negative means an increase"
+    },
+    "R3": {
+      "value": {
+        "per_intervention": {
+          "I1_cl_blocker": {
+            "separation_in_sd": 0.03274416058958457,
+            "wounds_per_arm": 14625
+          },
+          "I2_amiloride_plus_cl_blocker": {
+            "separation_in_sd": 1.3783759218312293,
+            "wounds_per_arm": 9
+          },
+          "I4_pge2": {
+            "separation_in_sd": 0.025500245396481328,
+            "wounds_per_arm": 24114
+          },
+          "I3_amiloride_far_band": {
+            "separation_in_sd": 11.256543911935534,
+            "wounds_per_arm": 1
+          }
+        },
+        "recommended": "I3_amiloride_far_band",
+        "sigma": 0.232163735324878
+      },
+      "detail": "separation of the rivals' predictions in per-wound SDs (0.23) and wounds per arm for a two-sided 5% test at 80% power"
+    },
+    "R4": {
+      "value": {
+        "A": -0.0,
+        "B": 0.00592023222294813,
+        "measured_change": 0.82,
+        "vehicle_change": 0.22
+      },
+      "detail": "predicted fractional change of the field under PGE2 (positive: increase); weak evidence (vehicle +22 +- 20%, cAMP-insensitive keratinocyte Cl- transport)"
+    }
+  },
+  "target_battery_mV": 21.280007772468863,
+  "phase1": {
+    "grid": [
+      2e-16,
+      2.5e-16,
+      3e-16,
+      3.5e-16,
+      4e-16,
+      5e-16
+    ],
+    "battery_mV": [
+      18.908008032784934,
+      20.243134817155426,
+      21.32251609085232,
+      22.22051332767176,
+      22.983713507748543,
+      24.220639448573632
+    ],
+    "a_na": 2.9785365223142775e-16,
+    "check_mV": 21.28031737980181
+  },
+  "phase2": {
+    "d_grid": [
+      100.0,
+      150.0,
+      200.0,
+      250.0,
+      300.0,
+      400.0
+    ],
+    "reduction_A": [
+      0.24588984423011162,
+      0.5544929357292969,
+      0.7115137074992035,
+      0.8086732984609529,
+      0.876359402805917,
+      0.9356709518531867
+    ],
+    "g_grid": [
+      1e-16,
+      3e-16,
+      1e-15,
+      3e-15,
+      1e-14,
+      3e-14
+    ],
+    "reduction_B": [
+      0.9714374938077444,
+      0.9715211201962614,
+      0.9717638902831773,
+      0.9721798218122208,
+      0.9725834175245912,
+      0.9727691554377063
+    ],
+    "d_star_um": 177.2279467572617,
+    "g_star": 9.999999999999965e-17,
+    "field_A_unblocked": -144.7120127948704
+  },
+  "all_passed": false,
+  "finished_utc": "2026-10-08T07:53:50+00:00",
+  "frozen_config_sha256": {
+    "A:none": "ac2a112c77ffa1c3f85365f1daab910405b32ef5f582d97290e31831a9c01afa",
+    "A:amiloride": "073541138ed2f4e46c3b82f37e9b130928101500fca2dc98a6ff9b5c3bf9727d",
+    "A:I1_cl_blocker": "d73a57c18d5bfe2dcc0450f1d5c93c9ccd6f8d3213b13ff97bb2fa4b8dc854d4",
+    "A:I2_amiloride_plus_cl_blocker": "956699f89daea6923d1178f8d922fa3550e5c616b516ca2f7648e4a119b44da0",
+    "A:I4_pge2": "4bacba53742c007b77456f170fdba64fdd0310bf480e0e5fdd46a612434916a1",
+    "B:none": "c8ca11a964c811a2ff73688b7cdcdfcde72b33493a5c3f932369c419bd880eb6",
+    "B:amiloride": "eaffe288480de8baf0a42d2e4a49ecac5a50e9ffc3bf6d65a375af5998eb4b42",
+    "B:I1_cl_blocker": "53afd30e6ad56d0599f61f9311d30393c249f8698e1b1b12678cabb93feee406",
+    "B:I2_amiloride_plus_cl_blocker": "7f919cb914f25f68fa91a604244fe7d8c88e48e762b3e2288402a0219a4c5b1a",
+    "B:I4_pge2": "1b20c72dc3cf5f4417bce68b5a652deeef2d7ef19d567ce4a59b981e50526a9f"
+  },
+  "conservation": {
+    "A:none": {
+      "kcl": 3.1648352659934375e-12,
+      "charge": 5.4215426377266e-10
+    },
+    "A:amiloride": {
+      "kcl": 3.4986314187150777e-12,
+      "charge": 3.8265263648194775e-10
+    },
+    "A:I1_cl_blocker": {
+      "kcl": 3.1648352659934375e-12,
+      "charge": 5.4215426377266e-10
+    },
+    "A:I2_amiloride_plus_cl_blocker": {
+      "kcl": 3.4986314187150777e-12,
+      "charge": 3.8265263648194775e-10
+    },
+    "A:I4_pge2": {
+      "kcl": 3.1648352659934375e-12,
+      "charge": 5.4215426377266e-10
+    },
+    "B:none": {
+      "kcl": 4.617894409141034e-12,
+      "charge": 5.625834254669058e-10
+    },
+    "B:amiloride": {
+      "kcl": 2.5183357385166166e-12,
+      "charge": 3.2023693210265956e-10
+    },
+    "B:I1_cl_blocker": {
+      "kcl": 3.1648352659934375e-12,
+      "charge": 5.4215426377266e-10
+    },
+    "B:I2_amiloride_plus_cl_blocker": {
+      "kcl": 2.9523391566039417e-12,
+      "charge": 2.1381162566584176e-10
+    },
+    "B:I4_pge2": {
+      "kcl": 3.923447735161762e-12,
+      "charge": 5.221835452252572e-10
+    }
+  }
+}

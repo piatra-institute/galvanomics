@@ -1,0 +1,47 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "epithelium-solver"
+version = "0.1.0"
+description = "Bioelectric tissue solvers built from BETSE's physics: a polarized epithelium and a stratified skin"
+license = "MIT"
+license-files = ["LICENSE", "THIRD_PARTY_NOTICES.md"]
+authors = [{ name = "Piatra Institute" }]
+requires-python = ">=3.12"
+dependencies = [
+    "numpy>=2,<3",
+    "scipy>=1.14,<2",
+    "pydantic>=2.11,<3",
+    "pyyaml>=6,<7",
+    "typer>=0.15,<1",
+    "tissue-bundle",
+    "pyamg>=5,<6",
+]
+
+[project.scripts]
+episolver = "episolver.cli:app"
+
+[tool.uv.sources]
+tissue-bundle = { path = "../tissue-bundle", editable = true }
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3,<10",
+    "ruff>=0.11,<1",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["slow: runs a full simulation (seconds)"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 99
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/episolver"]

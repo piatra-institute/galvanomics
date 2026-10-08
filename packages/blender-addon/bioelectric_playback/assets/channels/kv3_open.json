@@ -1,0 +1,42 @@
+{
+  "key": "kv3_open",
+  "pdb_id": "7PQT",
+  "stands_for": "Kv3.4, open (human Kv3.1 as stand-in)",
+  "source": "https://www.rcsb.org/structure/7PQT",
+  "licence": "PDB data are CC0 1.0 (wwPDB)",
+  "title": "Apo human Kv3.1 cryo-EM structure",
+  "method": "ELECTRON MICROSCOPY",
+  "resolution_A": "2.65",
+  "organism": "Homo sapiens",
+  "entities_kept": [
+    "Potassium voltage-gated channel subfamily C member 1"
+  ],
+  "entities_dropped": [],
+  "chains_kept": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "heavy_atoms": 10452,
+  "isosurface": {
+    "sigma_A": 2.4,
+    "grid_A": 1.0,
+    "level": 0.028683108441248155,
+    "volume_rule": "1.21 A3/Da"
+  },
+  "triangles": {
+    "high": 5000,
+    "low": 498
+  },
+  "orientation": {
+    "method": "OPM (membrane normal along z, core centred at z = 0); cytoplasmic side by the positive-inside rule",
+    "opm_half_thickness_A": 14.1,
+    "radius_nm": 4.893988209486826,
+    "z_range_nm": [
+      -7.6236999999999995,
+      2.8011
+    ]
+  },
+  "note": ""
+}

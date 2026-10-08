@@ -1,0 +1,14 @@
+# Wide human forearm skin block: half of a 1.9 mm block, mirrored at the wound centre (x = 0).
+# 960 um is six papilla wavelengths, so every side wall is a mirror plane of the anatomy; the
+# papilla pattern is shifted so the wound sits in a trough, as in skin-forearm. The extracellular
+# grid is 4 um within 150 um of the wound and grows to 10 um toward the far wall (20 um put the
+# far battery 2.7% above a 4 um grid; 10 um, 1.8%).
+name: skin-forearm-wide
+description: Human forearm skin, half of a 1.9 mm block mirrored at the wound centre
+skin:
+  width_x_um: 960.0
+  papilla_offset_x_um: 80.0
+  wound: {x_um: 0.0}
+physics:
+  x_fine_halfwidth_um: 150.0
+  x_max_spacing_um: 10.0

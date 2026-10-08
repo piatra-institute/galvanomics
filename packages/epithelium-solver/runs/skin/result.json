@@ -1,0 +1,151 @@
+{
+  "run": "skin",
+  "started_utc": "2026-10-08T05:41:02+00:00",
+  "note": "Tolerances were fixed in docs/plan.md (Phase 2, skin physics) before the skin solver's first run. Machine-checked, not human-confirmed.",
+  "environment": {
+    "episolver": "0.1.0",
+    "python": "3.12.11",
+    "numpy": "2.5.3"
+  },
+  "checks": {
+    "K1": {
+      "passed": true,
+      "value": 3.0477071203210324e-12,
+      "tolerance": "<= 1e-9",
+      "detail": "max relative residual of every Kirchhoff solve, full run (2 s init, cut, 2 s)"
+    },
+    "K2": {
+      "passed": true,
+      "value": 4.627506404743772e-10,
+      "tolerance": "<= 1e-6 of 1 mV of membrane charge",
+      "detail": "every step and living cell, full run"
+    },
+    "K3": {
+      "passed": false,
+      "value": {
+        "max_abs_mV": 0.02899790245848013,
+        "mean_abs_mV": 0.006965979233372634,
+        "max_abs_by_layer_mV": {
+          "0": 0.024419358479058635,
+          "1": 0.018538685042030496,
+          "2": 0.02899790245848013
+        },
+        "faces": 6734
+      },
+      "tolerance": "<= 0.01 mV",
+      "detail": "channels and pumps off, no wound, 30 s: every living membrane face against the closed-form GHK voltage of its base permeabilities and current concentrations"
+    },
+    "K4": {
+      "passed": true,
+      "value": {
+        "max_abs_mV": 0.09477759450840262,
+        "frames": 41
+      },
+      "tolerance": "<= 0.1 mV",
+      "detail": "init 0.02 -> 0.01 s and sim 0.01 -> 0.005 s; cell V_mem at the end of init and every 0.05 s after the cut"
+    },
+    "K5": {
+      "passed": false,
+      "value": {
+        "battery_4um_mV": 22.58679295548118,
+        "battery_3um_mV": 22.255167204497347,
+        "battery_rel_change": 0.01490106760091279,
+        "peak_field_4um_V_per_m": 12.57221362227752,
+        "peak_field_3um_V_per_m": 20.643523111586337,
+        "field_rel_change": 0.39098507777379976,
+        "field_profile_4um": {
+          "mean_20_30_um": 2.637717898281564,
+          "mean_30_40_um": 2.0732926105259724,
+          "mean_40_50_um": 1.479440205522421,
+          "mean_50_60_um": 0.922208353412891,
+          "mean_60_70_um": 0.624633936934133,
+          "mean_70_80_um": 0.031066474590021896,
+          "peak_abs_20_50_um": 12.57221362227752
+        },
+        "field_profile_3um": {
+          "mean_20_30_um": 2.617191487519345,
+          "mean_30_40_um": 1.9460488203531776,
+          "mean_40_50_um": 1.3614049419319592,
+          "mean_50_60_um": 0.8303339533688359,
+          "mean_60_70_um": 0.5777440061410919,
+          "mean_70_80_um": 0.021190204663781444,
+          "peak_abs_20_50_um": 20.643523111586337
+        }
+      },
+      "tolerance": "battery <= 5%, peak field <= 15% (provisional)",
+      "detail": "ECS grid 4 vs 3 um laterally; battery before the cut, peak |E_x| in the viable epidermis 20-50 um from the wound centre at 2 s after the cut"
+    }
+  },
+  "reported": {
+    "K3b": {
+      "value": {
+        "max_abs_mV": 0.0011821670529130234,
+        "mean_abs_mV": 0.0007435803218922601,
+        "max_abs_by_layer_mV": {
+          "0": 0.001128309807472516,
+          "1": 0.0009126666455023039,
+          "2": 0.0011821670529130234
+        },
+        "faces": 6734
+      },
+      "detail": "added after the design check on the small test skin (before this run) showed the K3 gap growing with time when gap junctions are on: K3 with gap junctions off as well. Cells of different surface-to-volume ratio drift apart in concentration without pumps, and gap junctions then hold each cell away from its own GHK voltage; uncoupled, only the lag behind the drifting GHK remains"
+    },
+    "S1": {
+      "value": {
+        "intact_mV": 22.58679295548118,
+        "2_s_after_cut_mV": 3.077795280473694
+      },
+      "detail": "against 10-60 mV (inside positive) for human skin: calibrated, not predicted; the apical Na density (3e-16 m2/s) and the barrier (2000 ohm cm2) were chosen to land inside the range"
+    },
+    "S2": {
+      "value": {
+        "viable_epidermis": {
+          "mean_20_30_um": 2.637717898281564,
+          "mean_30_40_um": 2.0732926105259724,
+          "mean_40_50_um": 1.479440205522421,
+          "mean_50_60_um": 0.922208353412891,
+          "mean_60_70_um": 0.624633936934133,
+          "mean_70_80_um": 0.031066474590021896,
+          "peak_abs_20_50_um": 12.57221362227752
+        },
+        "beneath_stratum_corneum": {
+          "mean_20_30_um": -83.7349498720174,
+          "mean_30_40_um": -80.24726893094679,
+          "mean_40_50_um": -59.417032895245136,
+          "mean_50_60_um": -41.957167182345046,
+          "mean_60_70_um": -21.755371307982866,
+          "mean_70_80_um": -1.239769911412327,
+          "peak_abs_20_50_um": 115.7898514791246
+        }
+      },
+      "detail": "lateral field 2 s after the cut, V/m = mV/mm, positive toward the wound; not comparable with 107 +- 13 (human) or 177 +- 14 mV/mm (mouse): the block is 160 um wide, smaller than the field's 0.3-0.4 mm space constant, and the battery is calibrated"
+    },
+    "S3": {
+      "value": {
+        "battery_intact_mV": 9.021125603375513e-06,
+        "battery_after_mV": 4.6574321869166367e-07,
+        "viable_epidermis": {
+          "mean_20_30_um": 1.1123955531356773e-06,
+          "mean_30_40_um": 3.663134049408562e-07,
+          "mean_40_50_um": -1.7814304285064732e-07,
+          "mean_50_60_um": 5.482788916710276e-08,
+          "mean_60_70_um": 1.0033620865750633e-06,
+          "mean_70_80_um": 7.786616850366986e-07,
+          "peak_abs_20_50_um": 7.419112299568549e-06
+        },
+        "beneath_stratum_corneum": {
+          "mean_20_30_um": -1.654036553660526e-05,
+          "mean_30_40_um": -1.278534784305426e-05,
+          "mean_40_50_um": -8.43967335199993e-06,
+          "mean_50_60_um": -2.7196173784837883e-06,
+          "mean_60_70_um": 1.963220979728514e-06,
+          "mean_70_80_um": 1.823030957823861e-06,
+          "peak_abs_20_50_um": 2.8649908769193167e-05
+        }
+      },
+      "detail": "the same skin without apical Na channels in the granular layer"
+    }
+  },
+  "all_passed": false,
+  "finished_utc": "2026-10-08T05:42:30+00:00"
+}

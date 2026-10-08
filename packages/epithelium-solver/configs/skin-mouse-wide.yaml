@@ -1,0 +1,24 @@
+# Adult mouse back/flank skin, half of a 1.9 mm block mirrored at the wound centre (x = 0), for
+# the held-out amiloride prediction (docs/plan.md, H1). Sources and verdicts in docs/skin.md:
+#   viable epidermis 17.5 um, stratum corneum 4.2 um, dermis 182 um (Wei 2017, CD1 flank)   V
+#   flat dermal-epidermal junction, no rete ridges (Rittie 2016)                              V
+#   granular layer SG1-SG3 with tight junctions at SG2 (Kubo 2009, mouse)                    V
+#   rows and thickness of basal, spinous and granular layers; cell sizes; corneocyte rows     U
+#   (human forearm values reused for lateral spacing)
+# Membranes: the forearm parameters unchanged (no recalibration to a mouse battery).
+name: skin-mouse-wide
+description: Adult mouse back skin, half of a 1.9 mm block mirrored at the wound centre
+skin:
+  width_x_um: 960.0
+  width_y_um: 80.0
+  dermis_depth_um: 182.0
+  papilla_amplitude_um: 0.0
+  layers:
+    - {name: stratum basale, rows: 1, thickness_um: 5.0, lateral_spacing_um: 9.5, color: [0.55, 0.2, 0.45]}
+    - {name: stratum spinosum, rows: 1, thickness_um: 5.0, lateral_spacing_um: 13.5, color: [0.85, 0.45, 0.55]}
+    - {name: stratum granulosum, rows: 3, thickness_um: 7.5, lateral_spacing_um: 28.6, jitter: 0.2, packing: kelvin, color: [0.55, 0.35, 0.75]}
+    - {name: stratum corneum, rows: 6, thickness_um: 4.2, lateral_spacing_um: 36.4, jitter: 0.15, row_sheets: true, color: [0.92, 0.85, 0.65]}
+  wound: {x_um: 0.0}
+physics:
+  x_fine_halfwidth_um: 150.0
+  x_max_spacing_um: 10.0

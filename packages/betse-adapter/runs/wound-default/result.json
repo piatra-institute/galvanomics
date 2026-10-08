@@ -1,0 +1,117 @@
+{
+  "run": "wound-default",
+  "started_utc": "2026-10-08T01:44:52+00:00",
+  "note": "Tolerances were fixed in docs/plan.md (Phase 1, audit checks) on 2026-10-07, before any audit run. Machine-checked, not human-confirmed.",
+  "environment": {
+    "betse": "1.5.0",
+    "betse_adapter": "0.1.0",
+    "python": "3.12.11",
+    "numpy": "2.5.3",
+    "machine": "arm64",
+    "system": "Darwin"
+  },
+  "checks": {
+    "C1": {
+      "passed": true,
+      "value": {
+        "centres_identical": true,
+        "membrane_midpoints_identical": true,
+        "polygons_identical": true,
+        "mem_grid_map_identical": true
+      },
+      "tolerance": "bitwise",
+      "detail": "post-wound geometry equals kept pre-wound geometry; 14 cells removed"
+    },
+    "C2": {
+      "passed": true,
+      "value": 1.4210854715202004e-17,
+      "tolerance": "<= 1e-12 V",
+      "detail": "exported cell V_mem vs plain mean of exported membrane V_mem"
+    },
+    "C3": {
+      "passed": true,
+      "value": 0,
+      "tolerance": "0 bad cells",
+      "detail": "cells not counter-clockwise with positive area (vertex count equals membrane count is enforced by the exporter)"
+    },
+    "C5": {
+      "passed": true,
+      "value": true,
+      "tolerance": "exact",
+      "detail": "grid points equal (X, Y) flattened in C order"
+    },
+    "contract": {
+      "passed": true,
+      "value": [],
+      "tolerance": "no violations",
+      "detail": "tissuebundle validate"
+    },
+    "C4": {
+      "passed": true,
+      "value": {
+        "frames": 34,
+        "max_vmem_mV": 0.0,
+        "max_centre_um": 0.0
+      },
+      "tolerance": "<= 1e-9 mV, <= 1e-9 um, every frame",
+      "detail": "I/O check only: BETSE's own Vmem2D CSVs read the same array"
+    },
+    "D1": {
+      "passed": true,
+      "value": [],
+      "tolerance": "no differing arrays",
+      "detail": "two full runs with the same seed, separate processes"
+    },
+    "P3": {
+      "passed": true,
+      "value": {
+        "max_diff_coarse_mid_mV": 0.6585398591077176,
+        "max_diff_mid_fine_mV": 0.33546527971807727,
+        "observed_order": 0.9731073075688486,
+        "time_offset_s": 5e-05,
+        "offset_bound_mV": 0.7341008215516321
+      },
+      "tolerance": "<= 1 mV (provisional)",
+      "detail": "sim dt 1e-4 vs 5e-5 s from the same init, matched on sample index"
+    }
+  },
+  "reported": {
+    "R1": {
+      "value": {
+        "mean_mV": -7.013430572709701,
+        "min_mV": -73.95046372139527,
+        "max_mV": 47.36160698946244
+      },
+      "detail": "V_mem minus BETSE's GHK estimate (includes molecule-network channels)"
+    },
+    "R2": {
+      "value": {
+        "frame": 34,
+        "correlation": 0.9998010269037854,
+        "norm_ratio_ours_over_betse": 8903.173453229107,
+        "max_field_betse_V_per_m": 0.004836693621565658,
+        "max_field_ours_V_per_m": 42.22470445005895
+      },
+      "detail": "-grad(venv) by centred differences vs BETSE's efield_ecm, last frame"
+    }
+  },
+  "seed": 20261007,
+  "spec": "configs/wound-default.yaml",
+  "config_sha256": "2891d4430e8faeac0571b01fa93b65d71ba190a42a6bc93befae5f8682ad9912",
+  "timings_s": {
+    "seed": 1.6337521249661222,
+    "init": 1.9020845000632107,
+    "sim": 4.305014249985106,
+    "plot_sim": 0.9183452499564737
+  },
+  "skipped_quantities": [],
+  "cells": 227,
+  "cells_removed": 14,
+  "frames": 35,
+  "grid_shape": [
+    24,
+    25
+  ],
+  "all_passed": true,
+  "finished_utc": "2026-10-08T01:45:24+00:00"
+}

@@ -1,0 +1,47 @@
+{
+  "key": "cx43",
+  "pdb_id": "7Z1T",
+  "stands_for": "gap junction (human Cx43); one hemichannel drawn",
+  "source": "https://www.rcsb.org/structure/7Z1T",
+  "licence": "PDB data are CC0 1.0 (wwPDB)",
+  "title": "Connexin43 gap junction channel structure in digitonin",
+  "method": "ELECTRON MICROSCOPY",
+  "resolution_A": "2.26",
+  "organism": "Homo sapiens",
+  "entities_kept": [
+    "Gap junction alpha-1 protein"
+  ],
+  "entities_dropped": [],
+  "chains_kept": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "hemichannel": "one connexon of the docked pair, split at the docking plane",
+  "heavy_atoms": 9246,
+  "isosurface": {
+    "sigma_A": 2.4,
+    "grid_A": 1.0,
+    "level": 0.02850335331874488,
+    "volume_rule": "1.21 A3/Da"
+  },
+  "triangles": {
+    "high": 4998,
+    "low": 498
+  },
+  "orientation": {
+    "method": "heuristic: symmetry axis, 30 A hydrophobic slab, positive-inside rule; extracellular side: toward the docking plane",
+    "hydrophobic_fraction_in_slab": 0.7276478679504814,
+    "lys_arg_cytoplasmic_flank": 234,
+    "lys_arg_extracellular_flank": 366,
+    "radius_nm": 4.313619047043932,
+    "z_range_nm": [
+      -3.4,
+      4.391511569805769
+    ]
+  },
+  "note": ""
+}

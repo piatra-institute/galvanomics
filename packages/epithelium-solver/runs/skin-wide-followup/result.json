@@ -1,0 +1,198 @@
+{
+  "run": "skin-wide-followup",
+  "started_utc": "2026-10-08T07:33:55+00:00",
+  "note": "L6 and S6 were fixed in docs/plan.md (follow-ups to the wide audit) before these runs. Machine-checked, not human-confirmed.",
+  "environment": {
+    "episolver": "0.1.0",
+    "python": "3.12.11",
+    "numpy": "2.5.3"
+  },
+  "checks": {
+    "L6": {
+      "passed": true,
+      "value": {
+        "field_beneath_corneum:mean_20_50_um": {
+          "a": -172.02769604920832,
+          "b": -171.98440879205393,
+          "rel_change": 0.0002516929148311821,
+          "abs_change": 0.043287257154389636
+        },
+        "field_beneath_corneum:mean_50_100_um": {
+          "a": -123.59921758725227,
+          "b": -123.54858543290736,
+          "rel_change": 0.00040981573497987184,
+          "abs_change": 0.05063215434491042
+        },
+        "field_beneath_corneum:mean_100_200_um": {
+          "a": -71.60151168643347,
+          "b": -71.5184575104308,
+          "rel_change": 0.0011612970818134422,
+          "abs_change": 0.08305417600266196
+        },
+        "field_beneath_corneum:mean_200_400_um": {
+          "a": -21.46417704360409,
+          "b": -21.112387604536238,
+          "rel_change": 0.01666270275334774,
+          "abs_change": 0.35178943906785065
+        },
+        "field_viable:mean_20_50_um": {
+          "a": 2.493708966927373,
+          "b": 2.4936985501203695,
+          "rel_change": 4.177251898847539e-06,
+          "abs_change": 1.0416807003643669e-05
+        },
+        "field_viable:mean_50_100_um": {
+          "a": 0.4037104761233936,
+          "b": 0.4040404352335519,
+          "rel_change": 0.0008166487345939332,
+          "abs_change": 0.0003299591101582622
+        },
+        "field_viable:mean_100_200_um": {
+          "a": -0.12175220970168632,
+          "b": -0.1210188507993392,
+          "rel_change": 0.00605987329662464,
+          "abs_change": 0.0007333589023471171
+        },
+        "field_viable:mean_200_400_um": {
+          "a": -0.14769116390540055,
+          "b": -0.14493153556167743,
+          "rel_change": 0.019040910130623194,
+          "abs_change": 0.0027596283437231195
+        }
+      },
+      "tolerance": "each band within 5% or 0.1 mV/mm",
+      "detail": "960 um half-block (b) against the same cells cut at 640 um (a), 2 s after the cut"
+    }
+  },
+  "reported": {
+    "S6b": {
+      "value": {
+        "main960": {
+          "lambda_um": 106.76298821624674,
+          "fit_from_um": 50.0,
+          "fit_to_um": 330.0,
+          "points": 15
+        },
+        "crop640": {
+          "lambda_um": 103.33757036852545,
+          "fit_from_um": 50.0,
+          "fit_to_um": 330.0,
+          "points": 15
+        },
+        "barrier_half": {
+          "lambda_um": 81.28869220969186,
+          "fit_from_um": 50.0,
+          "fit_to_um": 270.0,
+          "points": 12
+        },
+        "barrier_double": {
+          "lambda_um": 134.6063974578344,
+          "fit_from_um": 50.0,
+          "fit_to_um": 430.0,
+          "points": 20
+        },
+        "ecs_double": {
+          "lambda_um": 146.76036995750164,
+          "fit_from_um": 50.0,
+          "fit_to_um": 450.0,
+          "points": 21
+        },
+        "dermis_double": {
+          "lambda_um": 106.70942578333782,
+          "fit_from_um": 50.0,
+          "fit_to_um": 330.0,
+          "points": 15
+        }
+      },
+      "detail": "post hoc, added after S6 gave a non-monotonic profile for the halved barrier: the same fit applied to the change the wound made (after minus before), which removes the static variation from the cell arrangement"
+    },
+    "S6": {
+      "value": {
+        "main960": {
+          "space_constant": {
+            "lambda_um": 106.14825630454447,
+            "fit_from_um": 50.0,
+            "fit_to_um": 350.0,
+            "points": 16
+          },
+          "cable_estimate_um": 124.46287593227918,
+          "battery_far_intact_mV": 24.058479033429805,
+          "field_beneath_corneum_20_50": -171.98440879205393
+        },
+        "barrier_half": {
+          "space_constant": {
+            "lambda_um": 271.3146968109362,
+            "fit_from_um": 50.0,
+            "fit_to_um": 770.0,
+            "points": 13
+          },
+          "cable_estimate_um": 88.00854357769455,
+          "battery_far_intact_mV": 14.02733067925118,
+          "field_beneath_corneum_20_50": -123.75668105221162
+        },
+        "barrier_double": {
+          "space_constant": {
+            "lambda_um": 134.31486936767774,
+            "fit_from_um": 50.0,
+            "fit_to_um": 430.0,
+            "points": 20
+          },
+          "cable_estimate_um": 176.0170871553891,
+          "battery_far_intact_mV": 37.99209200794325,
+          "field_beneath_corneum_20_50": -224.43865084860988
+        },
+        "ecs_double": {
+          "space_constant": {
+            "lambda_um": 148.17842559985218,
+            "fit_from_um": 50.0,
+            "fit_to_um": 470.0,
+            "points": 22
+          },
+          "cable_estimate_um": 175.63503272862638,
+          "battery_far_intact_mV": 24.024767923584776,
+          "field_beneath_corneum_20_50": -129.3914559179875
+        },
+        "dermis_double": {
+          "space_constant": {
+            "lambda_um": 106.09543245571123,
+            "fit_from_um": 50.0,
+            "fit_to_um": 350.0,
+            "points": 16
+          },
+          "cable_estimate_um": 124.6188636222139,
+          "battery_far_intact_mV": 24.0584164963029,
+          "field_beneath_corneum_20_50": -172.12847325880188
+        }
+      },
+      "detail": "space constant (exponential fit beneath the stratum corneum, 2 s after the cut) and its one-dimensional cable estimate, for the parameter changes named; reference 0.3-0.4 mm (guinea pig, Barker 1982)"
+    }
+  },
+  "conservation": {
+    "main960": {
+      "kcl": 5.9275094875774954e-12,
+      "charge": 1.2715571247868856e-09
+    },
+    "crop640": {
+      "kcl": 4.984666725141217e-12,
+      "charge": 9.101059843622051e-10
+    },
+    "barrier_half": {
+      "kcl": 2.5445688942279273e-12,
+      "charge": 4.727761390466638e-10
+    },
+    "barrier_double": {
+      "kcl": 5.056932085527411e-12,
+      "charge": 1.0829992558410547e-09
+    },
+    "ecs_double": {
+      "kcl": 3.409471595791552e-12,
+      "charge": 7.31838494435062e-10
+    },
+    "dermis_double": {
+      "kcl": 5.00700694711851e-12,
+      "charge": 1.0747429297848598e-09
+    }
+  },
+  "all_passed": true,
+  "finished_utc": "2026-10-08T07:36:42+00:00"
+}

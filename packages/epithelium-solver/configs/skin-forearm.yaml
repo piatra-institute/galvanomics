@@ -1,0 +1,5 @@
+# Human dorsal-forearm skin with a V-shaped incision: anatomy and physics defaults are in
+# episolver/skin.py and episolver/skin_physics.py, with their sources in docs/skin.md.
+# Override any field here, e.g. skin: {wound: {top_width_um: 30}} or physics: {sim_s: ...}.
+name: skin-forearm
+description: Human forearm skin wound (procedural anatomy, BETSE-derived membrane physics)

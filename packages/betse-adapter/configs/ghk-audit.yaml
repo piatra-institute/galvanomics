@@ -1,0 +1,8 @@
+# The default wound simulation with the auxiliary molecule network off, so that BETSE's GHK
+# estimate depends only on stored concentrations and permeabilities (audit check P1).
+description: Default wound simulation, molecule network off, GHK calculator on
+set:
+  - path: [variable settings, use Goldman calculator]
+    value: true
+  - path: [general network, implement network]
+    value: false

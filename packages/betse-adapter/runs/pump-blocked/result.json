@@ -1,0 +1,139 @@
+{
+  "run": "pump-blocked",
+  "started_utc": "2026-10-08T01:45:32+00:00",
+  "note": "Tolerances were fixed in docs/plan.md (Phase 1, audit checks) on 2026-10-07, before any audit run. Machine-checked, not human-confirmed.",
+  "environment": {
+    "betse": "1.5.0",
+    "betse_adapter": "0.1.0",
+    "python": "3.12.11",
+    "numpy": "2.5.3",
+    "machine": "arm64",
+    "system": "Darwin"
+  },
+  "checks": {
+    "C1": {
+      "passed": true,
+      "value": {
+        "centres_identical": true,
+        "membrane_midpoints_identical": true,
+        "polygons_identical": true,
+        "mem_grid_map_identical": true
+      },
+      "tolerance": "bitwise",
+      "detail": "post-wound geometry equals kept pre-wound geometry; 0 cells removed"
+    },
+    "C2": {
+      "passed": true,
+      "value": 7.105427357601002e-18,
+      "tolerance": "<= 1e-12 V",
+      "detail": "exported cell V_mem vs plain mean of exported membrane V_mem"
+    },
+    "C3": {
+      "passed": true,
+      "value": 0,
+      "tolerance": "0 bad cells",
+      "detail": "cells not counter-clockwise with positive area (vertex count equals membrane count is enforced by the exporter)"
+    },
+    "C5": {
+      "passed": true,
+      "value": true,
+      "tolerance": "exact",
+      "detail": "grid points equal (X, Y) flattened in C order"
+    },
+    "contract": {
+      "passed": true,
+      "value": [],
+      "tolerance": "no violations",
+      "detail": "tissuebundle validate"
+    },
+    "P2": {
+      "passed": true,
+      "value": {
+        "max_abs_vs_our_ghk_mV": 0.0009078862135279975,
+        "mean_vs_our_ghk_mV": 0.0004535485116399391,
+        "mean_vmem_mV": 0.6923999552610459,
+        "time_s": 9.901,
+        "max_abs_vs_betse_ghk_mV": 0.0009078862135165622,
+        "mean_vmem_first_post_mV": -17.15265651893487
+      },
+      "tolerance": "<= 0.5 mV at the last frame",
+      "detail": "pump blocked, molecules off, no wound: V_mem vs GHK per cell"
+    }
+  },
+  "reported": {
+    "R4": {
+      "value": {
+        "time_s": [
+          0.0,
+          0.101,
+          0.201,
+          0.301,
+          0.501,
+          1.0010000000000001,
+          2.001,
+          3.001,
+          4.001,
+          5.001,
+          6.001,
+          7.001,
+          8.001,
+          9.001,
+          9.901
+        ],
+        "mean_vmem_mV": [
+          -23.321907030082297,
+          -17.15265651893487,
+          -12.570334485559856,
+          -9.164681985365588,
+          -4.7511586006616895,
+          -0.5352287330729968,
+          0.6397932956758005,
+          0.6988824667717808,
+          0.7004579092849528,
+          0.6991660148346207,
+          0.6977702010338571,
+          0.6963862450959621,
+          0.6950094325945417,
+          0.6936354843911435,
+          0.6923999552610459
+        ],
+        "max_abs_vmem_minus_ghk_mV": [
+          24.043920992879606,
+          17.871101722802774,
+          13.28645012570773,
+          9.878568592759509,
+          5.465254136598916,
+          1.2478439701237298,
+          0.07004612966606716,
+          0.008617622217087395,
+          0.004878726699467539,
+          0.004081017235665119,
+          0.0034172973960470143,
+          0.0027539763944226525,
+          0.0020888821379927425,
+          0.0014666712775540658,
+          0.0009078862135279975
+        ]
+      },
+      "detail": "Added after the first run, reported only: the time course of mean V_mem and of max |V_mem - GHK|, showing V_mem relaxing from the pump-held baseline onto GHK"
+    }
+  },
+  "seed": 20261007,
+  "spec": "configs/pump-blocked.yaml",
+  "config_sha256": "76dbb0d1f869c20e99c1b8c2d939c3f6b1a22040777f4d98f2ae0aca377fa694",
+  "timings_s": {
+    "seed": 1.6345390409696847,
+    "init": 1.7462199579458684,
+    "sim": 21.504211166058667
+  },
+  "skipped_quantities": [],
+  "cells": 227,
+  "cells_removed": 0,
+  "frames": 100,
+  "grid_shape": [
+    24,
+    25
+  ],
+  "all_passed": true,
+  "finished_utc": "2026-10-08T01:45:58+00:00"
+}

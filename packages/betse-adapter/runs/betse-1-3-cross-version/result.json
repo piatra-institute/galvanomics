@@ -1,0 +1,78 @@
+{
+  "run": "betse-1-3-cross-version",
+  "started_utc": "2026-10-08T01:45:58+00:00",
+  "note": "Tolerances were fixed in docs/plan.md (Phase 1, audit checks) on 2026-10-07, before any audit run. Machine-checked, not human-confirmed.",
+  "environment": {
+    "betse": "1.5.0",
+    "betse_adapter": "0.1.0",
+    "python": "3.12.11",
+    "numpy": "2.5.3",
+    "machine": "arm64",
+    "system": "Darwin"
+  },
+  "checks": {
+    "C1": {
+      "passed": true,
+      "value": {
+        "centres_identical": true,
+        "membrane_midpoints_identical": true,
+        "polygons_identical": true,
+        "mem_grid_map_identical": true
+      },
+      "tolerance": "bitwise",
+      "detail": "post-wound geometry equals kept pre-wound geometry; 14 cells removed"
+    },
+    "C2": {
+      "passed": true,
+      "value": 1.4210854715202004e-17,
+      "tolerance": "<= 1e-12 V",
+      "detail": "exported cell V_mem vs plain mean of exported membrane V_mem"
+    },
+    "C3": {
+      "passed": true,
+      "value": 0,
+      "tolerance": "0 bad cells",
+      "detail": "cells not counter-clockwise with positive area (vertex count equals membrane count is enforced by the exporter)"
+    },
+    "C5": {
+      "passed": true,
+      "value": true,
+      "tolerance": "exact",
+      "detail": "grid points equal (X, Y) flattened in C order"
+    },
+    "contract": {
+      "passed": true,
+      "value": [],
+      "tolerance": "no violations",
+      "detail": "tissuebundle validate"
+    }
+  },
+  "reported": {
+    "R3": {
+      "value": {
+        "frames": 34,
+        "max_vmem_mV": 6.2308647130748795e-09,
+        "max_centre_um": 0.0
+      },
+      "detail": "BETSE 1.5.0 init and sim on the BETSE 1.3.0 world vs 1.3.0's own sim Vmem2D CSVs: max differences over every frame (reported, not gated)"
+    }
+  },
+  "source": "a BETSE 1.3.0 wound run with per-frame V_mem exports (not distributed)",
+  "seed": 20261007,
+  "timings_s": {
+    "init": 2.140586749999784,
+    "sim": 4.5937221250496805
+  },
+  "skipped_quantities": [
+    "vmem_ghk"
+  ],
+  "cells": 225,
+  "cells_removed": 14,
+  "frames": 35,
+  "grid_shape": [
+    24,
+    25
+  ],
+  "all_passed": true,
+  "finished_utc": "2026-10-08T01:46:06+00:00"
+}

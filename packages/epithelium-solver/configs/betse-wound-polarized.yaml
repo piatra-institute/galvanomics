@@ -1,0 +1,20 @@
+# BETSE's default wound tissue (the same 227 cells and the same 14 removed by the wedge cut),
+# extruded into 10 um prisms and given epithelial polarity: an apical Na leak (ENaC-like,
+# BETSE's NaLeak channel), basolateral K leak (BETSE's KLeak) and the Na/K-ATPase on the
+# basolateral membrane only. Channel densities and the tight-junction resistance are
+# assumptions chosen to give a TEP of a few mV; they are not fitted to any tissue.
+name: betse-wound-polarized
+description: BETSE wound tissue as polarized 3D epithelium (apical NaLeak, basolateral KLeak + pump)
+footprint:
+  kind: betse_bundle
+  bundle: ../../betse-adapter/data/work/wound-default-a/wound-default-a.tbundle
+wound:
+  kind: from_bundle
+apical:
+  pump_alpha: 0.0
+  channels:
+    - {type: NaLeak, max_d: 1.0e-17}
+basolateral:
+  pump_alpha: 1.0e-7
+  channels:
+    - {type: KLeak, max_d: 5.0e-17}

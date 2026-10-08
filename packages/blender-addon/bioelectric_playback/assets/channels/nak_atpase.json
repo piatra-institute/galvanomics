@@ -1,0 +1,43 @@
+{
+  "key": "nak_atpase",
+  "pdb_id": "7E20",
+  "stands_for": "Na/K-ATPase (human alpha1 beta1 FXYD2, E2-2K)",
+  "source": "https://www.rcsb.org/structure/7E20",
+  "licence": "PDB data are CC0 1.0 (wwPDB)",
+  "title": "Cryo EM structure of a K+-bound Na+,K+-ATPase in the E2 state",
+  "method": "ELECTRON MICROSCOPY",
+  "resolution_A": "2.7",
+  "organism": null,
+  "entities_kept": [
+    "Sodium/potassium-transporting ATPase subunit alpha-1",
+    "Sodium/potassium-transporting ATPase subunit beta-1",
+    "Sodium/potassium-transporting ATPase subunit gamma"
+  ],
+  "entities_dropped": [],
+  "chains_kept": [
+    "A",
+    "B",
+    "C"
+  ],
+  "heavy_atoms": 10383,
+  "isosurface": {
+    "sigma_A": 2.4,
+    "grid_A": 1.0,
+    "level": 0.029666787965066655,
+    "volume_rule": "1.21 A3/Da"
+  },
+  "triangles": {
+    "high": 4998,
+    "low": 498
+  },
+  "orientation": {
+    "method": "OPM (membrane normal along z, core centred at z = 0); cytoplasmic side by the positive-inside rule",
+    "opm_half_thickness_A": 15.4,
+    "radius_nm": 4.627915211735791,
+    "z_range_nm": [
+      -9.9512,
+      6.305400000000001
+    ]
+  },
+  "note": ""
+}

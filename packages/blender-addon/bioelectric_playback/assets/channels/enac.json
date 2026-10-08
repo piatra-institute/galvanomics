@@ -1,0 +1,50 @@
+{
+  "key": "enac",
+  "pdb_id": "6BQN",
+  "stands_for": "NaLeak, apical (ENaC)",
+  "source": "https://www.rcsb.org/structure/6BQN",
+  "licence": "PDB data are CC0 1.0 (wwPDB)",
+  "title": "Cryo-EM structure of ENaC",
+  "method": "ELECTRON MICROSCOPY",
+  "resolution_A": "3.9",
+  "organism": null,
+  "entities_kept": [
+    "EGFP-SCNN1G chimera",
+    "SCNN1A",
+    "SCNN1B"
+  ],
+  "entities_dropped": [
+    "7B1 fab",
+    "7B1 fab",
+    "10D4 fab",
+    "10D4 fab"
+  ],
+  "chains_kept": [
+    "A",
+    "B",
+    "C"
+  ],
+  "heavy_atoms": 10467,
+  "isosurface": {
+    "sigma_A": 2.4,
+    "grid_A": 1.0,
+    "level": 0.030786726627876227,
+    "volume_rule": "1.21 A3/Da"
+  },
+  "triangles": {
+    "high": 4998,
+    "low": 500
+  },
+  "orientation": {
+    "method": "heuristic: symmetry axis, 30 A hydrophobic slab, positive-inside rule; extracellular side: the larger domain (stated rule)",
+    "hydrophobic_fraction_in_slab": 0.38256177222380006,
+    "lys_arg_cytoplasmic_flank": 3,
+    "lys_arg_extracellular_flank": 204,
+    "radius_nm": 4.6861281646998005,
+    "z_range_nm": [
+      -1.7,
+      10.996323390083385
+    ]
+  },
+  "note": "human alpha-beta-gamma ENaC; transmembrane domain only partly ordered; its large extracellular domain sets the orientation"
+}

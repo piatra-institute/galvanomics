@@ -1,0 +1,45 @@
+{
+  "note": "Which structure draws each model channel or pump, and the sourced single-channel conductance or turnover used to turn the solver's conductance or pump rate into counts. Sources and verdicts: docs/nanoscope.md.",
+  "channels": {
+    "naleak": {
+      "open": "enac",
+      "closed": "enac",
+      "unitary_pS": 4.7,
+      "label": "ENaC (Na channel)",
+      "source": "Ishikawa 1998, rat alpha-beta-gamma ENaC, Na+, 20-23 C (V)"
+    },
+    "kleak": {
+      "open": "twik1",
+      "closed": "twik1",
+      "unitary_pS": 34.0,
+      "label": "TWIK-1 (K leak stand-in)",
+      "source": "Lesage 1996, conditions not read (V, value)"
+    },
+    "kv3p4": {
+      "open": "kv3_open",
+      "closed": "kv_closed",
+      "unitary_pS": 35.0,
+      "label": "Kv3.4 (voltage-gated K)",
+      "source": "Fernandez 2003, Kv3.1 + Kv3.4 co-expressed, 32-38 pS; no value for homomeric Kv3.4 (P)"
+    },
+    "clleak": {
+      "open": "ano1",
+      "closed": "ano1",
+      "unitary_pS": 2.63,
+      "label": "ANO1 (Ca2+-activated Cl channel)",
+      "source": "Hartzell & Whitlock 2016, noise analysis 2.63 pS (V/P)"
+    }
+  },
+  "pump": {
+    "structure": "nak_atpase",
+    "turnover_per_s": 200.0,
+    "label": "Na/K-ATPase",
+    "source": "Friedrich 1996, about 200 per s at 36 C, saturating substrates (V)"
+  },
+  "gap_junction": {
+    "structure": "cx43",
+    "unitary_pS": 120.0,
+    "label": "Cx43 hemichannel",
+    "source": "Bukauskas & Peracchia 1997, main state about 120 pS (V)"
+  }
+}

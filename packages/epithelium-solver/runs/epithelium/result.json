@@ -1,0 +1,240 @@
+{
+  "run": "epithelium",
+  "started_utc": "2026-10-08T02:05:22+00:00",
+  "note": "Tolerances were fixed in docs/plan.md (Phase 1b) on 2026-10-08, before the solver's first run. Machine-checked, not human-confirmed.",
+  "environment": {
+    "episolver": "0.1.0",
+    "python": "3.12.11",
+    "numpy": "2.5.3"
+  },
+  "checks": {
+    "E1": {
+      "passed": true,
+      "value": {
+        "ghk_mV": 0.6531232714579173,
+        "vmem_apical_mV": 0.6538414031077276,
+        "vmem_basolateral_mV": 0.6538414031077254,
+        "max_abs_diff_mV": 0.0007181316498103829
+      },
+      "tolerance": "<= 0.01 mV",
+      "detail": "one cell, pump off, no channels, 20 s; GHK in closed form"
+    },
+    "E4": {
+      "passed": true,
+      "value": {
+        "max_abs_diff_mV": 0.18759969113751884,
+        "mean_betse_mV": -23.3219070300823,
+        "mean_ours_mV": -23.29510064130113
+      },
+      "tolerance": "<= 0.5 mV",
+      "detail": "zero-net-current voltage from episolver's flux and pump functions on BETSE's exported baseline state (ghk-audit bundle) vs BETSE's V_mem, every cell"
+    },
+    "E6": {
+      "passed": false,
+      "value": {
+        "max_abs_diff_mV": 0.21628606412134532,
+        "interior_cells": 100,
+        "tep_mV": -2.7123369909856976
+      },
+      "tolerance": "<= 0.05 mV",
+      "detail": "intact polarized hex sheet: V_ap, V_bl and TEP of interior cells vs the single-column zero-current root (scipy.optimize.root)"
+    },
+    "E7": {
+      "passed": true,
+      "value": {
+        "max_diff_dt_vs_half_mV": 0.00030955121174969236,
+        "max_diff_half_vs_quarter_mV": 0.00015575908118847792,
+        "observed_order": 0.9908618279327976
+      },
+      "tolerance": "<= 0.1 mV (dt/2 vs dt/4)",
+      "detail": "betse-wound-polarized, sim dt 1e-3, 5e-4, 2.5e-4 s, frames at identical times every 0.05 s for 0.5 s"
+    },
+    "E8": {
+      "passed": false,
+      "value": {
+        "peak_field_5um": 0.12136617650071117,
+        "peak_field_2p5um": 0.1368372147891255,
+        "relative_change": 0.11306162809770823,
+        "far_tep_5um_mV": -0.04019814828576226,
+        "far_tep_2p5um_mV": -0.04032365326692415,
+        "tep_change_mV": 0.0001255049811618933
+      },
+      "tolerance": "<= 10% and <= 0.1 mV (provisional)",
+      "detail": "bath grid 5 vs 2.5 um, last frame at 0.5 s"
+    },
+    "contract:betse-wound-polarized": {
+      "passed": true,
+      "value": [],
+      "tolerance": "no violations",
+      "detail": "tissuebundle validate"
+    },
+    "contract:betse-wound-uniform": {
+      "passed": true,
+      "value": [],
+      "tolerance": "no violations",
+      "detail": "tissuebundle validate"
+    },
+    "contract:hex-wound-polarized": {
+      "passed": true,
+      "value": [],
+      "tolerance": "no violations",
+      "detail": "tissuebundle validate"
+    },
+    "E2": {
+      "passed": true,
+      "value": 3.260376536184328e-13,
+      "tolerance": "<= 1e-6 (of 1 mV of membrane charge)",
+      "detail": "every step and live cell of the three exported runs"
+    },
+    "E3": {
+      "passed": true,
+      "value": 1.177068413518716e-12,
+      "tolerance": "<= 1e-9",
+      "detail": "every linear solve of the three exported runs"
+    }
+  },
+  "reported": {
+    "E6b": {
+      "value": {
+        "max_diff_vs_sheet_average_column_mV": 0.001006173607450478,
+        "steady_state_kcl_residual_A": 3.205448667263909e-16,
+        "largest_membrane_current_A": 3.31566301436727e-12,
+        "relative_residual": 9.66759484716696e-05
+      },
+      "detail": "Added after E6 failed, reported only. (a) The same column with the sheet-average junction density (1/R_t), which governs a sheet smaller than its length constant; (b) Kirchhoff's law at every free node at the final state, written independently of the solver's assembly; the residual is the capacitive current of the slow concentration drift"
+    },
+    "W1": {
+      "value": {
+        "betse-wound-polarized": -2.6862427504395847,
+        "betse-wound-uniform": 1.3764569643379351e-05,
+        "hex-wound-polarized": -2.7125112823312323
+      },
+      "detail": "mean TEP of the intact sheet at the end of init (mV)"
+    },
+    "W2": {
+      "value": {
+        "betse-wound-polarized": {
+          "wound_centre_um": [
+            122.35918429938728,
+            39.63110004149172
+          ],
+          "wound_radius_um": 25.560439613567343,
+          "apical": {
+            "peak_mV_per_mm": 0.12139416088096344,
+            "peak_time_s": 1.9999999999998905,
+            "mean_radial_component_near_edge_mV_per_mm": 0.04652984681449382,
+            "direction": "away from the wound",
+            "mean_magnitude_by_distance_from_edge_mV_per_mm": {
+              "0-10um": 0.0677131221056065,
+              "10-20um": 0.04697420340138601,
+              "20-30um": 0.034187183952217814,
+              "30-40um": 0.025543019795056333,
+              "40-50um": 0.01714013794745368,
+              "50-60um": 0.010699401042067862,
+              "60-70um": 0.008236799647729904
+            }
+          },
+          "basolateral": {
+            "peak_mV_per_mm": 0.725781284686267,
+            "peak_time_s": 1.9999999999998905,
+            "mean_radial_component_near_edge_mV_per_mm": -0.23175868505806047,
+            "direction": "toward the wound",
+            "mean_magnitude_by_distance_from_edge_mV_per_mm": {
+              "0-10um": 0.3584297146953831,
+              "10-20um": 0.2649656457439465,
+              "20-30um": 0.20680436137269048,
+              "30-40um": 0.17446790730031628,
+              "40-50um": 0.15827665397205667,
+              "50-60um": 0.1438286953400862,
+              "60-70um": 0.1235042616574896
+            }
+          },
+          "tep_after_mV": -0.032762216708192696
+        },
+        "hex-wound-polarized": {
+          "wound_centre_um": [
+            69.28203230275508,
+            65.0
+          ],
+          "wound_radius_um": 13.660254037844389,
+          "apical": {
+            "peak_mV_per_mm": 0.1610603620430109,
+            "peak_time_s": 1.9999999999998905,
+            "mean_radial_component_near_edge_mV_per_mm": 0.06520241603588092,
+            "direction": "away from the wound",
+            "mean_magnitude_by_distance_from_edge_mV_per_mm": {
+              "0-10um": 0.11412887480779647,
+              "10-20um": 0.06567376737526791,
+              "20-30um": 0.04101208979402136,
+              "30-40um": 0.02523769869407432,
+              "40-50um": 0.01379851993940972,
+              "50-60um": 0.006402992911864228,
+              "60-70um": 0.0035146226256139368
+            }
+          },
+          "basolateral": {
+            "peak_mV_per_mm": 0.7982173578527888,
+            "peak_time_s": 1.9999999999998905,
+            "mean_radial_component_near_edge_mV_per_mm": -0.32604025992348407,
+            "direction": "toward the wound",
+            "mean_magnitude_by_distance_from_edge_mV_per_mm": {
+              "0-10um": 0.5709301549945075,
+              "10-20um": 0.3286711669505056,
+              "20-30um": 0.2058311628100922,
+              "30-40um": 0.12722619701935173,
+              "40-50um": 0.0711508049271744,
+              "50-60um": 0.03580516688855898,
+              "60-70um": 0.019782021670866047
+            }
+          },
+          "tep_after_mV": -0.03527694065843862
+        }
+      },
+      "detail": "wound field in the apical bath, polarized membranes"
+    },
+    "W3": {
+      "value": {
+        "wound_centre_um": [
+          122.35918429938728,
+          39.63110004149172
+        ],
+        "wound_radius_um": 25.560439613567343,
+        "apical": {
+          "peak_mV_per_mm": 1.3682450746477927e-06,
+          "peak_time_s": 1.9999999999998905,
+          "mean_radial_component_near_edge_mV_per_mm": -2.6261865572282483e-07,
+          "direction": "toward the wound",
+          "mean_magnitude_by_distance_from_edge_mV_per_mm": {
+            "0-10um": 5.159172587194392e-07,
+            "10-20um": 3.808147881673387e-07,
+            "20-30um": 3.08927818481957e-07,
+            "30-40um": 2.9287054660998503e-07,
+            "40-50um": 2.5331636052368217e-07,
+            "50-60um": 2.3098527617158942e-07,
+            "60-70um": 2.4055525361798604e-07
+          }
+        },
+        "basolateral": {
+          "peak_mV_per_mm": 4.536049882267668e-05,
+          "peak_time_s": 1.9999999999998905,
+          "mean_radial_component_near_edge_mV_per_mm": 4.0885634155040355e-06,
+          "direction": "away from the wound",
+          "mean_magnitude_by_distance_from_edge_mV_per_mm": {
+            "0-10um": 8.391797559667821e-06,
+            "10-20um": 7.25964139286661e-06,
+            "20-30um": 5.669788193779139e-06,
+            "30-40um": 5.677651111875172e-06,
+            "40-50um": 6.013860279781607e-06,
+            "50-60um": 6.8161962558200386e-06,
+            "60-70um": 8.267407521695638e-06
+          }
+        },
+        "tep_after_mV": 2.1215951758027568e-07
+      },
+      "detail": "the same wound, BETSE-uniform membranes"
+    }
+  },
+  "revision": "v2: each removed cell's bath shunt is spread over the grid nodes inside its footprint. v1 used a point shunt at the cell centre; its record, in which E8 failed, is kept in runs/epithelium-v1-point-shunt/. Tolerances unchanged.",
+  "all_passed": false,
+  "finished_utc": "2026-10-08T02:09:09+00:00"
+}

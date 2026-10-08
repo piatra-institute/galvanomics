@@ -1,0 +1,44 @@
+{
+  "key": "kv_closed",
+  "pdb_id": "9OIC",
+  "stands_for": "Kv3.4, closed (Drosophila Shaker I384R as stand-in)",
+  "source": "https://www.rcsb.org/structure/9OIC",
+  "licence": "PDB data are CC0 1.0 (wwPDB)",
+  "title": "Structure of shaker-IR-I384R",
+  "method": "ELECTRON MICROSCOPY",
+  "resolution_A": "3.48",
+  "organism": "Drosophila melanogaster",
+  "entities_kept": [
+    "Potassium voltage-gated channel protein Shaker"
+  ],
+  "entities_dropped": [],
+  "chains_kept": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "heavy_atoms": 7592,
+  "isosurface": {
+    "sigma_A": 2.4,
+    "grid_A": 1.0,
+    "level": 0.027830727832654695,
+    "volume_rule": "1.21 A3/Da"
+  },
+  "triangles": {
+    "high": 5000,
+    "low": 500
+  },
+  "orientation": {
+    "method": "heuristic: symmetry axis, 30 A hydrophobic slab, positive-inside rule",
+    "hydrophobic_fraction_in_slab": 0.6744597249508841,
+    "lys_arg_cytoplasmic_flank": 86,
+    "lys_arg_extracellular_flank": 363,
+    "radius_nm": 4.831979731473522,
+    "z_range_nm": [
+      -3.242355125051273,
+      3.2
+    ]
+  },
+  "note": "closed pore with activated voltage sensors; no fully resting Kv structure exists"
+}

@@ -1,0 +1,45 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "betse-adapter"
+version = "0.1.0"
+description = "Run BETSE wound simulations in-process and export them as tissue bundles"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Piatra Institute" }]
+requires-python = "==3.12.*"
+dependencies = [
+    "betse==1.5.0",
+    "tissue-bundle",
+    "typer>=0.15,<1",
+]
+
+[project.scripts]
+betse-adapter = "betse_adapter.cli:app"
+
+[tool.uv.sources]
+tissue-bundle = { path = "../tissue-bundle", editable = true }
+epithelium-solver = { path = "../epithelium-solver", editable = true }
+
+[dependency-groups]
+dev = [
+    "epithelium-solver",
+    "pytest>=8.3,<10",
+    "ruff>=0.11,<1",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["slow: runs a real BETSE simulation (seconds to minutes)"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 99
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/betse_adapter"]

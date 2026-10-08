@@ -1,0 +1,25 @@
+# Passive limit (audit check P2): no wound, no molecule network, and the Na/K-ATPase blocked
+# from the start of the sim phase (BETSE ramps the block with a logistic pulse; 0.01 s here).
+# Run long enough at a coarser step for V_mem to relax onto its GHK value.
+description: No wound, molecule network off, Na/K-ATPase blocked during sim, 10 s
+set:
+  - path: [variable settings, use Goldman calculator]
+    value: true
+  - path: [general network, implement network]
+    value: false
+  - path: [cutting event, event happens]
+    value: false
+  - path: [block NaKATP pump, event happens]
+    value: true
+  - path: [block NaKATP pump, change start]
+    value: 0.0
+  - path: [block NaKATP pump, change finish]
+    value: 1.0e6
+  - path: [block NaKATP pump, change rate]
+    value: 0.01
+  - path: [sim time settings, time step]
+    value: 1.0e-3
+  - path: [sim time settings, total time]
+    value: 10.0
+  - path: [sim time settings, sampling rate]
+    value: 0.1

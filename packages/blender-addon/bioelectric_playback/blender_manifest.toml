@@ -1,0 +1,21 @@
+schema_version = "1.0.0"
+
+id = "bioelectric_playback"
+version = "0.1.0"
+name = "Bioelectric Playback"
+tagline = "Import and play back bioelectric tissue simulation bundles"
+maintainer = "Piatra Institute"
+type = "add-on"
+
+tags = ["Import-Export", "Animation"]
+
+blender_version_min = "5.2.0"
+
+license = ["SPDX:GPL-3.0-or-later"]
+copyright = ["2026 Piatra Institute"]
+
+[permissions]
+files = "Read run bundles and configurations, run the local solver"
+
+[build]
+paths_exclude_pattern = ["__pycache__/", ".*", "*.zip"]

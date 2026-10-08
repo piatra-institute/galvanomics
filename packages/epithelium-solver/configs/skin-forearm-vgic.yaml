@@ -1,0 +1,19 @@
+# The forearm skin of skin-forearm.yaml with one voltage-gated K channel added: Kv3.4 (BETSE's
+# Kv3p4) on the basolateral membrane of every living layer. A DEMONSTRATION, not an established
+# keratinocyte current: no voltage-gated current has been recorded in human keratinocytes
+# (Manaves 2004); Kv3.4 has the best mRNA evidence among the channels BETSE can port (Human Protein
+# Atlas). Its density, 2e-18 m2/s (4% of the K leak), is an assumption chosen to stay well below
+# the whole-cell leak, so that it could escape detection as Manaves found. Sources: docs/nanoscope.md.
+name: skin-forearm-vgic
+description: Human forearm skin with a low density of Kv3.4 (demonstration of a voltage-gated channel)
+physics:
+  membranes:
+    0:
+      apical: {pump_alpha: 1.0e-7, channels: [{type: KLeak, max_d: 5.0e-17}, {type: Kv3p4, max_d: 2.0e-18}]}
+      basolateral: {pump_alpha: 1.0e-7, channels: [{type: KLeak, max_d: 5.0e-17}, {type: Kv3p4, max_d: 2.0e-18}]}
+    1:
+      apical: {pump_alpha: 1.0e-7, channels: [{type: KLeak, max_d: 5.0e-17}, {type: Kv3p4, max_d: 2.0e-18}]}
+      basolateral: {pump_alpha: 1.0e-7, channels: [{type: KLeak, max_d: 5.0e-17}, {type: Kv3p4, max_d: 2.0e-18}]}
+    2:
+      apical: {pump_alpha: 0.0, channels: [{type: NaLeak, max_d: 3.0e-16}, {type: KLeak, max_d: 5.0e-17}]}
+      basolateral: {pump_alpha: 1.0e-7, channels: [{type: KLeak, max_d: 5.0e-17}, {type: Kv3p4, max_d: 2.0e-18}]}

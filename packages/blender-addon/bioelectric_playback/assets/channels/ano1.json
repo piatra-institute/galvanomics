@@ -1,0 +1,40 @@
+{
+  "key": "ano1",
+  "pdb_id": "5OYB",
+  "stands_for": "ClLeak (Ca2+-activated Cl- channel ANO1/TMEM16A, mouse, Ca2+-bound)",
+  "source": "https://www.rcsb.org/structure/5OYB",
+  "licence": "PDB data are CC0 1.0 (wwPDB)",
+  "title": "Structure of calcium-bound mTMEM16A chloride channel at 3.75 A resolution",
+  "method": "ELECTRON MICROSCOPY",
+  "resolution_A": "3.75",
+  "organism": "Mus musculus",
+  "entities_kept": [
+    "Anoctamin-1"
+  ],
+  "entities_dropped": [],
+  "chains_kept": [
+    "A",
+    "B"
+  ],
+  "heavy_atoms": 11766,
+  "isosurface": {
+    "sigma_A": 2.4,
+    "grid_A": 1.0,
+    "level": 0.02843310931696873,
+    "volume_rule": "1.21 A3/Da"
+  },
+  "triangles": {
+    "high": 4998,
+    "low": 500
+  },
+  "orientation": {
+    "method": "OPM (membrane normal along z, core centred at z = 0); cytoplasmic side by the positive-inside rule",
+    "opm_half_thickness_A": 15.9,
+    "radius_nm": 5.301789368026546,
+    "z_range_nm": [
+      -5.868,
+      5.1917
+    ]
+  },
+  "note": ""
+}

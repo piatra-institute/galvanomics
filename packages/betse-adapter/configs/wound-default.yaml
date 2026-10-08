@@ -1,0 +1,8 @@
+# BETSE 1.5.0's default configuration, which is a wound simulation: a hexagonal sheet in a
+# 150 µm world, a wedge-shaped cut ("surgery" profile) applied at sim time zero with broken
+# tight junctions, extracellular spaces on, auxiliary molecule network on.
+# The only change is to record BETSE's own GHK estimate.
+description: BETSE default wound simulation with the GHK calculator on
+set:
+  - path: [variable settings, use Goldman calculator]
+    value: true

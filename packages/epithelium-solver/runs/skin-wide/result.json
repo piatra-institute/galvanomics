@@ -1,0 +1,247 @@
+{
+  "run": "skin-wide",
+  "started_utc": "2026-10-08T05:48:05+00:00",
+  "note": "Tolerances were fixed in docs/plan.md (wide skin block) before any wide-block run. Machine-checked, not human-confirmed.",
+  "environment": {
+    "episolver": "0.1.0",
+    "python": "3.12.11",
+    "numpy": "2.5.3"
+  },
+  "checks": {
+    "L1": {
+      "passed": true,
+      "value": {
+        "intact_mV": 24.058479033429805,
+        "after_mV": 23.799299612286436,
+        "rel_change": 0.010772893032150243
+      },
+      "tolerance": "within 5%",
+      "detail": "battery more than 800 um from the wound centre, 2 s after the cut"
+    },
+    "L2": {
+      "passed": false,
+      "value": {
+        "field_beneath_corneum:mean_20_50_um": {
+          "a": -186.01597345788068,
+          "b": -171.98440879205393,
+          "rel_change": 0.08158625984982332
+        },
+        "field_beneath_corneum:mean_50_100_um": {
+          "a": -125.57506085661302,
+          "b": -123.54858543290736,
+          "rel_change": 0.016402255166297577
+        },
+        "field_beneath_corneum:mean_100_200_um": {
+          "a": -59.45076568812081,
+          "b": -71.5184575104308,
+          "rel_change": 0.16873534808199617
+        },
+        "field_beneath_corneum:mean_200_400_um": {
+          "a": -18.128495052002144,
+          "b": -21.112387604536238,
+          "rel_change": 0.14133373299251908
+        },
+        "field_viable:mean_20_50_um": {
+          "a": 2.688192847603679,
+          "b": 2.4936985501203695,
+          "rel_change": 0.07799430988718407
+        },
+        "field_viable:mean_50_100_um": {
+          "a": 0.5477114442227803,
+          "b": 0.4040404352335519,
+          "rel_change": 0.3555857197960415
+        },
+        "field_viable:mean_100_200_um": {
+          "a": -0.25420431457960424,
+          "b": -0.1210188507993392,
+          "rel_change": 1.1005348580040577
+        },
+        "field_viable:mean_200_400_um": {
+          "a": -0.1516547667840336,
+          "b": -0.14493153556167743,
+          "rel_change": 0.046389015311957625
+        }
+      },
+      "tolerance": "within 5%",
+      "detail": "band means at half-width 640 (a) vs 960 um (b), 2 s after the cut"
+    },
+    "L3": {
+      "passed": true,
+      "value": {
+        "field_beneath_corneum:mean_20_50_um": {
+          "a": -172.44009209120557,
+          "b": -171.98440879205393,
+          "rel_change": 0.002649561680341678
+        },
+        "field_beneath_corneum:mean_50_100_um": {
+          "a": -120.10705740793867,
+          "b": -123.54858543290736,
+          "rel_change": 0.027855665145090636
+        },
+        "field_beneath_corneum:mean_100_200_um": {
+          "a": -68.93864736475612,
+          "b": -71.5184575104308,
+          "rel_change": 0.03607194891330571
+        },
+        "field_beneath_corneum:mean_200_400_um": {
+          "a": -20.001150256855016,
+          "b": -21.112387604536238,
+          "rel_change": 0.05263437601166718
+        },
+        "field_viable:mean_20_50_um": {
+          "a": 2.404067705093481,
+          "b": 2.4936985501203695,
+          "rel_change": 0.03594293505225887
+        },
+        "field_viable:mean_50_100_um": {
+          "a": 0.37410318287187194,
+          "b": 0.4040404352335519,
+          "rel_change": 0.07409469387482215
+        },
+        "field_viable:mean_100_200_um": {
+          "a": -0.11867057686941904,
+          "b": -0.1210188507993392,
+          "rel_change": 0.019404199547505444
+        },
+        "field_viable:mean_200_400_um": {
+          "a": -0.13898460285019357,
+          "b": -0.14493153556167743,
+          "rel_change": 0.04103270339637759
+        }
+      },
+      "tolerance": "within 10%",
+      "detail": "band means with fine spacing 3 (a) vs 4 um (b), 2 s after the cut"
+    },
+    "L4": {
+      "passed": true,
+      "value": {
+        "max_kcl_residual": 6.685609122140909e-12,
+        "max_charge_error": 1.2715571247868856e-09,
+        "dt_halved_max_abs_mV": 0.08603264434565894,
+        "max_cg_iterations": 27
+      },
+      "tolerance": "as K1 (1e-9), K2 (1e-6), K4 (0.1 mV)",
+      "detail": "every wide run; time step on the main run"
+    }
+  },
+  "reported": {
+    "L5": {
+      "value": {
+        "field_beneath_corneum:mean_20_50_um": {
+          "a": -185.14376579004733,
+          "b": -174.53645703327382,
+          "rel_change": 0.060774172554398286
+        },
+        "field_beneath_corneum:mean_50_100_um": {
+          "a": -127.56765539762448,
+          "b": -120.3568330677826,
+          "rel_change": 0.059912031133129616
+        },
+        "field_beneath_corneum:mean_100_200_um": {
+          "a": -63.20276617377678,
+          "b": -68.76221476117087,
+          "rel_change": 0.08085034210581354
+        },
+        "field_beneath_corneum:mean_200_400_um": {
+          "a": -17.24958506367708,
+          "b": -17.168880531697237,
+          "rel_change": 0.0047006286653836936
+        },
+        "field_viable:mean_20_50_um": {
+          "a": 2.8141777839937183,
+          "b": 2.5140555909879185,
+          "rel_change": 0.11937770751038339
+        },
+        "field_viable:mean_50_100_um": {
+          "a": 0.4408551871938725,
+          "b": 0.39318677635474697,
+          "rel_change": 0.12123604786778847
+        },
+        "field_viable:mean_100_200_um": {
+          "a": -0.1899559435797251,
+          "b": -0.040722165425736895,
+          "rel_change": 3.6646817916925083
+        },
+        "field_viable:mean_200_400_um": {
+          "a": -0.1056088212291621,
+          "b": -0.13433773092712797,
+          "rel_change": 0.21385585047249298
+        }
+      },
+      "detail": "half domain at half-width 320 um (a) against a full 640 um block with the wound centred (b); the cell arrangements differ, so this is reported, not judged"
+    },
+    "S4": {
+      "value": {
+        "lambda_um": 106.14825630454447,
+        "fit_from_um": 50.0,
+        "fit_to_um": 350.0,
+        "points": 16,
+        "reference": "0.3-0.4 mm, guinea pig (Barker 1982)"
+      },
+      "detail": "exponential fit of the potential beneath the stratum corneum 2 s after the cut"
+    },
+    "S5": {
+      "value": {
+        "field_beneath_corneum": {
+          "mean_20_50_um": -171.98440879205393,
+          "mean_50_100_um": -123.54858543290736,
+          "mean_100_200_um": -71.5184575104308,
+          "mean_200_400_um": -21.112387604536238,
+          "peak_abs_20_50_um": 215.73216860316398
+        },
+        "field_viable": {
+          "mean_20_50_um": 2.4936985501203695,
+          "mean_50_100_um": 0.4040404352335519,
+          "mean_100_200_um": -0.1210188507993392,
+          "mean_200_400_um": -0.14493153556167743,
+          "peak_abs_20_50_um": 12.024332103987621
+        },
+        "reference": "107 +- 13 mV/mm, young human forearm (Nuccitelli 2011)"
+      },
+      "detail": "band means in mV/mm (= V/m), positive toward the wound, 2 s after the cut; the battery is calibrated, so agreement would not be a prediction"
+    },
+    "L2b": {
+      "value": {
+        "seed_8": {
+          "seed": 8,
+          "battery_intact_mV": 23.26068619047209,
+          "field_beneath_corneum": {
+            "mean_20_50_um": -163.09457968457855,
+            "mean_50_100_um": -119.33935350889082,
+            "mean_100_200_um": -70.8185133169692,
+            "mean_200_400_um": -18.90920450724939,
+            "peak_abs_20_50_um": 201.94548142155375
+          },
+          "field_viable": {
+            "mean_20_50_um": 2.417431201396102,
+            "mean_50_100_um": 0.40437430506223904,
+            "mean_100_200_um": -0.07547771318719237,
+            "mean_200_400_um": -0.17694150236504133,
+            "peak_abs_20_50_um": 20.44792739761276
+          }
+        },
+        "seed_9": {
+          "seed": 9,
+          "battery_intact_mV": 22.899635649966672,
+          "field_beneath_corneum": {
+            "mean_20_50_um": -178.49740804431997,
+            "mean_50_100_um": -126.09477157580712,
+            "mean_100_200_um": -66.08562494970266,
+            "mean_200_400_um": -17.272548631796923,
+            "peak_abs_20_50_um": 230.36264843268998
+          },
+          "field_viable": {
+            "mean_20_50_um": 2.6202074620780755,
+            "mean_50_100_um": 0.4997314658209335,
+            "mean_100_200_um": -0.1716463998073529,
+            "mean_200_400_um": -0.14474882321584834,
+            "peak_abs_20_50_um": 16.468632951210846
+          }
+        }
+      },
+      "detail": "post hoc, added after L2 failed: the 960 um block with generator seeds 8 and 9 (main run: seed 7). Band means beneath the stratum corneum spread 5-9% (20-200 um) and 20% (200-400 um) between seeds; the L2 differences are of the same size, so changing the width, which re-randomizes every cell, cannot isolate the domain-size effect"
+    }
+  },
+  "all_passed": false,
+  "finished_utc": "2026-10-08T05:53:07+00:00"
+}

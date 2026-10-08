@@ -1,0 +1,112 @@
+{
+  "run": "skin-amiloride",
+  "started_utc": "2026-10-08T05:53:28+00:00",
+  "note": "H1 was specified in docs/plan.md before this run: block fraction, primary and reported variants, measure and verdict rule. Machine-checked, not human-confirmed.",
+  "environment": {
+    "episolver": "0.1.0",
+    "python": "3.12.11",
+    "numpy": "2.5.3"
+  },
+  "checks": {
+    "H1": {
+      "passed": false,
+      "value": {
+        "predicted_reduction": 0.9715243805467308,
+        "measured": 0.64,
+        "sem": 0.07,
+        "field_unblocked_mV_per_mm": -144.69255689293277,
+        "field_blocked_mV_per_mm": -4.1202101878036546
+      },
+      "tolerance": "within 0.50-0.78 (64 +- 2 x 7%)",
+      "detail": "reduction of the band mean beneath the stratum corneum 20-100 um from the wound centre, 2 s after the cut, block on every apical Na channel"
+    }
+  },
+  "reported": {
+    "H1-variants": {
+      "value": {
+        "reductions": {
+          "primary": 0.9715243805467308,
+          "within_50": 0.02357513411510659,
+          "within_100": 0.24589406606753073,
+          "within_200": 0.711558279736829,
+          "uniform_25": 0.08051643986983903,
+          "uniform_50": 0.19540898198613454,
+          "uniform_75": 0.384093960790311,
+          "uniform_90": 0.5903683706189908
+        },
+        "runs": {
+          "unblocked": {
+            "field_20_100_um": -144.69255689293277,
+            "battery_intact_mV": 21.280007772468863,
+            "battery_far_after_mV": 21.31123933364129,
+            "kcl": 2.577509310118534e-12,
+            "charge": 3.5789038990010964e-10
+          },
+          "primary": {
+            "field_20_100_um": -4.1202101878036546,
+            "battery_intact_mV": 0.6077023123518933,
+            "battery_far_after_mV": 0.6033325356097803,
+            "kcl": 2.75270993513122e-12,
+            "charge": 2.0940255326604374e-10
+          },
+          "within_50": {
+            "field_20_100_um": -141.2814104587242,
+            "battery_intact_mV": 21.216920599735516,
+            "battery_far_after_mV": 21.31111127003885,
+            "kcl": 2.5154913925083268e-12,
+            "charge": 4.812128700160894e-10
+          },
+          "within_100": {
+            "field_20_100_um": -109.11351574882201,
+            "battery_intact_mV": 21.1335438041252,
+            "battery_far_after_mV": 21.310163867856144,
+            "kcl": 2.975740209071542e-12,
+            "charge": 3.2979814798379355e-10
+          },
+          "within_200": {
+            "field_20_100_um": -41.73537001947428,
+            "battery_intact_mV": 20.795901018330866,
+            "battery_far_after_mV": 21.304065896788526,
+            "kcl": 1.9003022714600923e-12,
+            "charge": 3.3187266203522157e-10
+          },
+          "uniform_25": {
+            "field_20_100_um": -133.0424273362497,
+            "battery_intact_mV": 19.572435359170434,
+            "battery_far_after_mV": 19.623384430209377,
+            "kcl": 4.2408661619184065e-12,
+            "charge": 5.651478996539527e-10
+          },
+          "uniform_50": {
+            "field_20_100_um": -116.41833164951392,
+            "battery_intact_mV": 17.148195566078556,
+            "battery_far_after_mV": 17.216014210806573,
+            "kcl": 3.504181281171274e-12,
+            "charge": 3.486587555749539e-10
+          },
+          "uniform_75": {
+            "field_20_100_um": -89.1170196190488,
+            "battery_intact_mV": 13.186558450382861,
+            "battery_far_after_mV": 13.259143007643944,
+            "kcl": 4.582297788881203e-12,
+            "charge": 2.832443801085337e-10
+          },
+          "uniform_90": {
+            "field_20_100_um": -59.270647839356414,
+            "battery_intact_mV": 8.881356093997189,
+            "battery_far_after_mV": 8.955140087495284,
+            "kcl": 2.5599736758929917e-12,
+            "charge": 3.15208249408145e-10
+          }
+        }
+      },
+      "detail": "block confined near the wound, and partial uniform blocks; reported, not judged"
+    }
+  },
+  "primary_config_sha256": "75ed0a938892cbedbe95e03c71bd66dd84ad1bbd96341c87ec21cb919e7439e7",
+  "config_file_sha256": "36038bee94db7a76e5f39eb4e7151a95e1561d9f137918b979a171b3a31a86de",
+  "block_fraction": 0.9999580017639259,
+  "all_passed": false,
+  "finished_utc": "2026-10-08T05:56:21+00:00",
+  "interpretation_fixed_in_advance": "a predicted reduction of 90% or more at the dose-derived block means the Na-only battery over-predicts: another current (for example Cl- secretion) carries part of the field, or the block is partial in vivo"
+}

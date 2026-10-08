@@ -1,0 +1,40 @@
+{
+  "key": "twik1",
+  "pdb_id": "3UKM",
+  "stands_for": "KLeak (two-pore-domain K channel TWIK-1 as stand-in)",
+  "source": "https://www.rcsb.org/structure/3UKM",
+  "licence": "PDB data are CC0 1.0 (wwPDB)",
+  "title": "Crystal structure of the human two pore domain potassium ion channel K2P1 (TWIK-1)",
+  "method": "X-RAY DIFFRACTION",
+  "resolution_A": "3.40",
+  "organism": "Homo sapiens",
+  "entities_kept": [
+    "Potassium channel subfamily K member 1"
+  ],
+  "entities_dropped": [],
+  "chains_kept": [
+    "A",
+    "B"
+  ],
+  "heavy_atoms": 3772,
+  "isosurface": {
+    "sigma_A": 2.4,
+    "grid_A": 1.0,
+    "level": 0.027220709162414418,
+    "volume_rule": "1.21 A3/Da"
+  },
+  "triangles": {
+    "high": 5000,
+    "low": 500
+  },
+  "orientation": {
+    "method": "OPM (membrane normal along z, core centred at z = 0); cytoplasmic side by the positive-inside rule",
+    "opm_half_thickness_A": 15.9,
+    "radius_nm": 2.555799846945983,
+    "z_range_nm": [
+      -2.7354,
+      5.1066
+    ]
+  },
+  "note": ""
+}

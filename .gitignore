@@ -1,0 +1,32 @@
+# Local working notes
+chats/
+
+# Fetched inputs and intermediates are regenerated, not versioned
+**/data/raw/
+**/data/work/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+*.egg-info/
+build/
+dist/
+
+# Node
+node_modules/
+
+# OS and editors
+.DS_Store
+._*
+.idea/
+.vscode/
+*.swp

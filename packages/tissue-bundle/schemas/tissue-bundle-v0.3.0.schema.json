@@ -1,0 +1,714 @@
+{
+  "$defs": {
+    "ArrayRecord": {
+      "additionalProperties": false,
+      "description": "One ``.npy`` file in the bundle.",
+      "properties": {
+        "file": {
+          "pattern": "^[a-z][a-z0-9_]*\\.npy$",
+          "title": "File",
+          "type": "string"
+        },
+        "dtype": {
+          "enum": [
+            "float64",
+            "float32",
+            "int64",
+            "int32",
+            "bool"
+          ],
+          "title": "Dtype",
+          "type": "string"
+        },
+        "shape": {
+          "items": {
+            "type": "integer"
+          },
+          "title": "Shape",
+          "type": "array"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        }
+      },
+      "required": [
+        "file",
+        "dtype",
+        "shape",
+        "sha256"
+      ],
+      "title": "ArrayRecord",
+      "type": "object"
+    },
+    "ContextMesh": {
+      "additionalProperties": false,
+      "description": "Non-cell anatomy shown with the tissue (e.g. the dermis): triangles or polygons.",
+      "properties": {
+        "verts": {
+          "$ref": "#/$defs/ArrayRecord"
+        },
+        "face_offsets": {
+          "$ref": "#/$defs/ArrayRecord"
+        },
+        "face_index": {
+          "$ref": "#/$defs/ArrayRecord"
+        },
+        "color": {
+          "maxItems": 4,
+          "minItems": 4,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Color",
+          "type": "array"
+        },
+        "description": {
+          "title": "Description",
+          "type": "string"
+        }
+      },
+      "required": [
+        "verts",
+        "face_offsets",
+        "face_index",
+        "color",
+        "description"
+      ],
+      "title": "ContextMesh",
+      "type": "object"
+    },
+    "Frames": {
+      "additionalProperties": false,
+      "properties": {
+        "count": {
+          "minimum": 1,
+          "title": "Count",
+          "type": "integer"
+        },
+        "baseline": {
+          "description": "Frames before the wound; removed cells still hold values in these.",
+          "items": {
+            "type": "integer"
+          },
+          "title": "Baseline",
+          "type": "array"
+        },
+        "time_integrated_s": {
+          "$ref": "#/$defs/ArrayRecord"
+        },
+        "time_reported_s": {
+          "$ref": "#/$defs/ArrayRecord"
+        }
+      },
+      "required": [
+        "count",
+        "baseline",
+        "time_integrated_s",
+        "time_reported_s"
+      ],
+      "title": "Frames",
+      "type": "object"
+    },
+    "Geometry": {
+      "additionalProperties": false,
+      "description": "Cells are polygons in the plane, stored CSR-style.\n\nCell ``i`` owns vertices and membranes ``offsets[i]:offsets[i + 1]``; membrane ``k`` of a\ncell is the edge from its vertex ``k - 1`` to its vertex ``k``. Cells are indexed in the\npre-wound numbering, so one mesh serves every frame.",
+      "properties": {
+        "n_cells": {
+          "minimum": 1,
+          "title": "N Cells",
+          "type": "integer"
+        },
+        "n_membranes": {
+          "minimum": 3,
+          "title": "N Membranes",
+          "type": "integer"
+        },
+        "grid_shape": {
+          "anyOf": [
+            {
+              "maxItems": 2,
+              "minItems": 2,
+              "prefixItems": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "integer"
+                }
+              ],
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Grid Shape"
+        },
+        "cell_verts": {
+          "$ref": "#/$defs/ArrayRecord"
+        },
+        "cell_offsets": {
+          "$ref": "#/$defs/ArrayRecord"
+        },
+        "cell_centres": {
+          "$ref": "#/$defs/ArrayRecord"
+        },
+        "cell_removed": {
+          "$ref": "#/$defs/ArrayRecord"
+        },
+        "mem_grid_index": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ArrayRecord"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "grid_x": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ArrayRecord"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "grid_y": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ArrayRecord"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "mem_neighbour": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ArrayRecord"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "For each membrane, the facing membrane of the neighbouring cell, or -1"
+        },
+        "extrusion_height_um": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Cells are prisms of this height when set (3D tissue)",
+          "title": "Extrusion Height Um"
+        },
+        "kind": {
+          "default": "polygons",
+          "description": "polygons: cell_verts [V, 2] and cell_offsets index vertices (membranes are edges). polyhedra: cell_verts [V, 3] are face vertices, face_offsets index them, cell_offsets index faces, and membranes are faces",
+          "enum": [
+            "polygons",
+            "polyhedra"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "face_offsets": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ArrayRecord"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "face_boundary": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ArrayRecord"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Per face: 0 shared with a cell, 1 basement, 2 surface, 3 side"
+        },
+        "cell_layer": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ArrayRecord"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "cell_inert": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ArrayRecord"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Cells with no electrical state (e.g. corneocytes): their values are NaN in every frame"
+        },
+        "layers": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Layers",
+          "type": "array"
+        },
+        "layer_colors": {
+          "default": [],
+          "items": {
+            "maxItems": 3,
+            "minItems": 3,
+            "prefixItems": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "type": "array"
+          },
+          "title": "Layer Colors",
+          "type": "array"
+        },
+        "context_meshes": {
+          "patternProperties": {
+            "^[a-z][a-z0-9_]*$": {
+              "$ref": "#/$defs/ContextMesh"
+            }
+          },
+          "title": "Context Meshes",
+          "type": "object"
+        },
+        "volume_shape": {
+          "anyOf": [
+            {
+              "maxItems": 3,
+              "minItems": 3,
+              "prefixItems": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "integer"
+                }
+              ],
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "3D extracellular grid [nz, ny, nx] for 'volume' quantities",
+          "title": "Volume Shape"
+        },
+        "volume_origin_um": {
+          "anyOf": [
+            {
+              "maxItems": 3,
+              "minItems": 3,
+              "prefixItems": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Volume Origin Um"
+        },
+        "volume_spacing_um": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Volume Spacing Um"
+        },
+        "volume_x": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ArrayRecord"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Node x (\u00b5m), non-uniform grids"
+        },
+        "volume_y": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ArrayRecord"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "volume_z": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ArrayRecord"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "n_cells",
+        "n_membranes",
+        "grid_shape",
+        "cell_verts",
+        "cell_offsets",
+        "cell_centres",
+        "cell_removed",
+        "mem_grid_index",
+        "grid_x",
+        "grid_y"
+      ],
+      "title": "Geometry",
+      "type": "object"
+    },
+    "Provenance": {
+      "additionalProperties": false,
+      "properties": {
+        "solver": {
+          "title": "Solver",
+          "type": "string"
+        },
+        "solver_version": {
+          "title": "Solver Version",
+          "type": "string"
+        },
+        "config_file": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Config File"
+        },
+        "config_sha256": {
+          "anyOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Config Sha256"
+        },
+        "seed": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Seed"
+        },
+        "command": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Command",
+          "type": "array"
+        },
+        "producer": {
+          "title": "Producer",
+          "type": "string"
+        },
+        "producer_version": {
+          "title": "Producer Version",
+          "type": "string"
+        },
+        "python": {
+          "title": "Python",
+          "type": "string"
+        },
+        "numpy": {
+          "title": "Numpy",
+          "type": "string"
+        },
+        "created_utc": {
+          "title": "Created Utc",
+          "type": "string"
+        }
+      },
+      "required": [
+        "solver",
+        "solver_version",
+        "config_file",
+        "config_sha256",
+        "seed",
+        "command",
+        "producer",
+        "producer_version",
+        "python",
+        "numpy",
+        "created_utc"
+      ],
+      "title": "Provenance",
+      "type": "object"
+    },
+    "Quantity": {
+      "additionalProperties": false,
+      "description": "A time series: the first axis is always the frame axis.",
+      "properties": {
+        "file": {
+          "pattern": "^[a-z][a-z0-9_]*\\.npy$",
+          "title": "File",
+          "type": "string"
+        },
+        "dtype": {
+          "enum": [
+            "float64",
+            "float32",
+            "int64",
+            "int32",
+            "bool"
+          ],
+          "title": "Dtype",
+          "type": "string"
+        },
+        "shape": {
+          "items": {
+            "type": "integer"
+          },
+          "title": "Shape",
+          "type": "array"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "unit": {
+          "enum": [
+            "um",
+            "mV",
+            "V",
+            "V/m",
+            "A/m2",
+            "mol/m3",
+            "m2/s",
+            "mol/m2/s",
+            "S/m2",
+            "s",
+            "1"
+          ],
+          "title": "Unit",
+          "type": "string"
+        },
+        "location": {
+          "enum": [
+            "cell",
+            "membrane",
+            "grid",
+            "cell_ion",
+            "membrane_ion",
+            "grid_ion",
+            "volume"
+          ],
+          "title": "Location",
+          "type": "string"
+        },
+        "description": {
+          "title": "Description",
+          "type": "string"
+        },
+        "domain": {
+          "anyOf": [
+            {
+              "enum": [
+                "cell",
+                "apical",
+                "basolateral",
+                "lateral",
+                "bath_apical",
+                "bath_basal"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Domain"
+        },
+        "z_um": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Height of a grid quantity's layer above the basal plane",
+          "title": "Z Um"
+        }
+      },
+      "required": [
+        "file",
+        "dtype",
+        "shape",
+        "sha256",
+        "unit",
+        "location",
+        "description"
+      ],
+      "title": "Quantity",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "default": "0.3.0",
+      "enum": [
+        "0.1.0",
+        "0.2.0",
+        "0.3.0"
+      ],
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "name": {
+      "pattern": "^[a-z][a-z0-9_]*$",
+      "title": "Name",
+      "type": "string"
+    },
+    "description": {
+      "title": "Description",
+      "type": "string"
+    },
+    "provenance": {
+      "$ref": "#/$defs/Provenance"
+    },
+    "ions": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Ions",
+      "type": "array"
+    },
+    "ion_charges": {
+      "description": "Valence of each ion, in the order of ions",
+      "items": {
+        "type": "integer"
+      },
+      "title": "Ion Charges",
+      "type": "array"
+    },
+    "constants": {
+      "description": "Solver constants needed to recompute derived quantities; the unit is in the name, e.g. temperature_k, membrane_thickness_m, gas_constant_j_per_k_mol",
+      "patternProperties": {
+        "^[a-z][a-z0-9_]*$": {
+          "type": "number"
+        }
+      },
+      "title": "Constants",
+      "type": "object"
+    },
+    "geometry": {
+      "$ref": "#/$defs/Geometry"
+    },
+    "frames": {
+      "$ref": "#/$defs/Frames"
+    },
+    "quantities": {
+      "patternProperties": {
+        "^[a-z][a-z0-9_]*$": {
+          "$ref": "#/$defs/Quantity"
+        }
+      },
+      "title": "Quantities",
+      "type": "object"
+    }
+  },
+  "required": [
+    "name",
+    "description",
+    "provenance",
+    "ions",
+    "ion_charges",
+    "constants",
+    "geometry",
+    "frames",
+    "quantities"
+  ],
+  "title": "Manifest",
+  "type": "object"
+}

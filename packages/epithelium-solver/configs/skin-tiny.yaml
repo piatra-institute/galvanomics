@@ -1,0 +1,17 @@
+# A small skin for fast tests (the Blender smoke test uses it too); not a scientific configuration.
+name: skin-tiny
+description: Small skin block with an incision, for tests
+skin:
+  width_x_um: 48.0
+  width_y_um: 24.0
+  dermis_depth_um: 16.0
+  papilla_amplitude_um: 4.0
+  papilla_wavelength_um: 48.0
+  layers:
+    - {name: stratum basale, rows: 1, thickness_um: 8.0, lateral_spacing_um: 9.0, color: [0.55, 0.2, 0.45]}
+    - {name: stratum spinosum, rows: 2, thickness_um: 14.0, lateral_spacing_um: 12.0, color: [0.85, 0.45, 0.55]}
+    - {name: stratum granulosum, rows: 3, thickness_um: 6.0, lateral_spacing_um: 20.0, jitter: 0.2, row_sheets: true, color: [0.55, 0.35, 0.75]}
+    - {name: stratum corneum, rows: 3, thickness_um: 3.0, lateral_spacing_um: 24.0, jitter: 0.15, row_sheets: true, color: [0.92, 0.85, 0.65]}
+  wound: {x_um: 24.0, top_width_um: 14.0, bottom_width_um: 6.0, depth_into_dermis_um: 4.0}
+physics:
+  time: {init_dt_s: 0.02, init_s: 0.4, dt_s: 0.01, sim_s: 0.1, sample_s: 0.05}

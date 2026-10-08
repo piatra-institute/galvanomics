@@ -1,0 +1,84 @@
+{
+  "run": "ghk-audit",
+  "started_utc": "2026-10-08T01:45:24+00:00",
+  "note": "Tolerances were fixed in docs/plan.md (Phase 1, audit checks) on 2026-10-07, before any audit run. Machine-checked, not human-confirmed.",
+  "environment": {
+    "betse": "1.5.0",
+    "betse_adapter": "0.1.0",
+    "python": "3.12.11",
+    "numpy": "2.5.3",
+    "machine": "arm64",
+    "system": "Darwin"
+  },
+  "checks": {
+    "C1": {
+      "passed": true,
+      "value": {
+        "centres_identical": true,
+        "membrane_midpoints_identical": true,
+        "polygons_identical": true,
+        "mem_grid_map_identical": true
+      },
+      "tolerance": "bitwise",
+      "detail": "post-wound geometry equals kept pre-wound geometry; 14 cells removed"
+    },
+    "C2": {
+      "passed": true,
+      "value": 7.105427357601002e-18,
+      "tolerance": "<= 1e-12 V",
+      "detail": "exported cell V_mem vs plain mean of exported membrane V_mem"
+    },
+    "C3": {
+      "passed": true,
+      "value": 0,
+      "tolerance": "0 bad cells",
+      "detail": "cells not counter-clockwise with positive area (vertex count equals membrane count is enforced by the exporter)"
+    },
+    "C5": {
+      "passed": true,
+      "value": true,
+      "tolerance": "exact",
+      "detail": "grid points equal (X, Y) flattened in C order"
+    },
+    "contract": {
+      "passed": true,
+      "value": [],
+      "tolerance": "no violations",
+      "detail": "tissuebundle validate"
+    },
+    "P1": {
+      "passed": true,
+      "value": 2.3093506273941244e-17,
+      "tolerance": "<= 1e-6 V",
+      "detail": "our GHK from the bundle's concentrations and diffusion constants vs BETSE's vm_GHK, every post-wound frame and live cell"
+    }
+  },
+  "reported": {
+    "R1": {
+      "value": {
+        "mean_mV": -24.031147248160945,
+        "min_mV": -24.043842764464227,
+        "max_mV": -23.993553591909368
+      },
+      "detail": "V_mem minus BETSE's GHK, molecules off"
+    }
+  },
+  "seed": 20261007,
+  "spec": "configs/ghk-audit.yaml",
+  "config_sha256": "f5d49f069769a5cc0b13d25b5771341926084f2428ec7dd12a0a50a6b4e37404",
+  "timings_s": {
+    "seed": 1.6234258750919253,
+    "init": 1.6999015420442447,
+    "sim": 4.13059100008104
+  },
+  "skipped_quantities": [],
+  "cells": 227,
+  "cells_removed": 14,
+  "frames": 35,
+  "grid_shape": [
+    24,
+    25
+  ],
+  "all_passed": true,
+  "finished_utc": "2026-10-08T01:45:32+00:00"
+}
